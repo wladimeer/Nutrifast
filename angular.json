@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "nutrifast"
+  "defaultProject": "nutrifast",
+  "cli": {
+    "analytics": false
+  }
 }

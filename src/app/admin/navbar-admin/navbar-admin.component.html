@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand text-white">Bienvenido(a) {{ user }}</a>
+    
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link"
+          routerLink="profileAdmin"
+        >Perfil</a>
+      </li>
+  
+      <li class="nav-item active">
+        <a class="nav-link"
+          routerLink="listOfRequest"
+        >Lista de Solicitudes</a>
+      </li>
+  
+      <li class="nav-item active">
+        <a class="nav-link"
+          routerLink="nutritionalInformationCreated"
+        >Información Nutricionales Creadas</a>
+      </li>
+  
+      <li class="nav-item active">
+        <a class="nav-link" 
+          style="cursor: pointer;"
+          (click)="onLogout()"
+        >Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>

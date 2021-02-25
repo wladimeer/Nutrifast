@@ -1,9 +1,14 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyBjYruPrBVMqnttDCy-fDzA-gOWqlY_tlc',
+    authDomain: 'nutrifast-innova.firebaseapp.com',
+    projectId: 'nutrifast-innova',
+    storageBucket: 'nutrifast-innova.appspot.com',
+    messagingSenderId: '492030803071',
+    appId: '1:492030803071:web:808c12ad963ec5c26a934a',
+    measurementId: 'G-JX0R7EW39W',
+  },
 };
 
 /*
