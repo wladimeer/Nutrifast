@@ -4,6 +4,8 @@ import { RegisterComponent } from './public/register/register.component';
 import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
 import { NavbarClientComponent } from './client/navbar-client/navbar-client.component';
 import { ProfileClientComponent } from './client/profile-client/profile-client.component';
+import { NewIngredientComponent } from './admin/new-ingredient/new-ingredient.component';
+import { ViewIngredientComponent } from './admin/view-ingredient/view-ingredient.component';
 import { FoodRequestComponent } from './client/food-request/food-request.component';
 import { NutritionalInformationComponent } from './client/nutritional-information/nutritional-information.component';
 import { ProfileAdminComponent } from './admin/profile-admin/profile-admin.component';
@@ -24,8 +26,10 @@ const routes: Routes = [
       { path: 'nutritionalInformationCreated',
         component: NutritionalInformationCreatedComponent,
       },
+      { path: 'newIngredient', component: NewIngredientComponent },
+      { path: 'viewIngredient', component: ViewIngredientComponent },
       { path: 'profileAdmin', component: ProfileAdminComponent },
-      { path: 'listOfRequest', component: ListOfRequestsComponent }
+      { path: 'listOfRequest', component: ListOfRequestsComponent },
   ]},
   { path: 'client', component: NavbarClientComponent, canActivate: [ClientGuard],
     children: [

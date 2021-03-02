@@ -72,55 +72,65 @@ export class RegisterComponent implements OnInit {
     this.loadRegions();
 
     this.firebase
-    .read().then((response: Array<User>) => {
+    .readUsers().then((response: Array<User>) => {
       this.users = response;
     });
     
     this.registerForm = this.formBuilder.group({
-      rut: ['', [
+      rut:
+      ['', [
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(15),
         this.rutValidator
       ]],
-      names: ['', [
+      names:
+      ['', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(30)
       ]],
-      lastName: ['', [
+      lastName:
+      ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(15)
       ]],
-      mothersLastName: ['', [
+      mothersLastName:
+      ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(15)
       ]],
-      email: ['', [
+      email:
+      ['', [
         Validators.email,
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(25)
       ]],
-      address: ['', [
+      address:
+      ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(30)
       ]],
-      phone: ['', [
+      phone:
+      ['', [
         Validators.required,
         Validators.minLength(9),
         Validators.maxLength(12)
       ]],
-      commune: ['', [
+      commune:
+      ['', [
         Validators.required
       ]],
-      region: ['', [
+      region:
+      ['', [
         Validators.required,
       ]],
-      password: ['', [
+      password:
+      ['', [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(20)

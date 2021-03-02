@@ -1,1 +1,9 @@
-<p>food-request works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="card col-sm-8 mt-5 mb-5">
+            <h4 class="text-center mt-3 mb-4">Solicitud de Alimento</h4>
+      
+            <form [formGroup]="foodForm" (ngSubmit)="onRequest()"></form>
+          </div>
+    </div>
+</div>

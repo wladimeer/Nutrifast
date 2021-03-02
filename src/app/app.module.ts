@@ -7,6 +7,8 @@ import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.componen
 import { NavbarClientComponent } from './client/navbar-client/navbar-client.component';
 import { ProfileClientComponent } from './client/profile-client/profile-client.component';
 import { FoodRequestComponent } from './client/food-request/food-request.component';
+import { NewIngredientComponent } from './admin/new-ingredient/new-ingredient.component';
+import { ViewIngredientComponent } from './admin/view-ingredient/view-ingredient.component';
 import { NutritionalInformationComponent } from './client/nutritional-information/nutritional-information.component';
 import { ProfileAdminComponent } from './admin/profile-admin/profile-admin.component';
 import { ListOfRequestsComponent } from './admin/list-of-requests/list-of-requests.component';
@@ -34,7 +36,9 @@ import { Ng2Rut } from 'ng2-rut';
     ListOfRequestsComponent,
     NutritionalInformationCreatedComponent,
     NavbarClientComponent,
-    NavbarAdminComponent
+    NavbarAdminComponent,
+    NewIngredientComponent,
+    ViewIngredientComponent
   ],
   imports: [
     BrowserModule,
