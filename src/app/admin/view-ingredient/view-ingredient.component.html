@@ -18,31 +18,15 @@
                         <td>{{ item.name }}</td>
                         <td>{{ item.font }}</td>
                         <td>{{ item.registerDate }}</td>
+                        
                         <button type="button" (click)="onView(item)"
                             class="btn btn-success" title="Ver"
                             *ngIf="!tableView && !item.selected"
                         ><i class="fas fa-eye"></i>
                         </button>
-                        <button type="button" class="btn btn-success"
-                            *ngIf="tableView && !item.selected" disabled
-                        ><i class="fas fa-eye"></i>
-                        </button>
-                        <button type="button" (click)="onHide(item)"
-                            class="btn btn-success" title="Ocultar"
-                            *ngIf="item.selected && tableView"
-                        ><i class="fas fa-eye-slash"></i>
-                        </button>
                         <button type="button" (click)="loadFormModify(item)"
                             class="btn btn-primary mr-2 ml-2" title="Actualizar"
                             *ngIf="!tableView && !item.selected"
-                        ><i class="fas fa-sync-alt"></i>
-                        </button>
-                        <button type="button" class="btn btn-primary mr-2 ml-2"
-                            *ngIf="tableView && !item.selected" disabled
-                        ><i class="fas fa-sync-alt"></i>
-                        </button>
-                        <button type="button" class="btn btn-primary mr-2 ml-2"
-                            *ngIf="tableView && item.selected" disabled
                         ><i class="fas fa-sync-alt"></i>
                         </button>
                         <button type="button" (click)="onRemove(item.id)"
@@ -50,15 +34,33 @@
                             *ngIf="!tableView && !item.selected"
                         ><i class="fas fa-times-circle"></i>
                         </button>
+
+                        <button type="button" class="btn btn-success"
+                            *ngIf="tableView && !item.selected" disabled
+                        ><i class="fas fa-eye"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary mr-2 ml-2"
+                            *ngIf="tableView && !item.selected" disabled
+                        ><i class="fas fa-sync-alt"></i>
+                        </button>
                         <button type="button" class="btn btn-danger"
                             *ngIf="tableView && !item.selected" disabled
                         ><i class="fas fa-times-circle"></i>
+                        </button>
+
+                        <button type="button" (click)="onHide(item)"
+                            class="btn btn-success" title="Ocultar"
+                            *ngIf="item.selected && tableView"
+                        ><i class="fas fa-eye-slash"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary mr-2 ml-2"
+                            *ngIf="tableView && item.selected" disabled
+                        ><i class="fas fa-sync-alt"></i>
                         </button>
                         <button type="button" class="btn btn-danger"
                             *ngIf="tableView && item.selected" disabled
                         ><i class="fas fa-times-circle"></i>
                         </button>
-                        
                     </tr>
                 </tbody>
             
@@ -93,6 +95,7 @@
                         </div>
                       </div>
                     </div>
+
                     <div class="col">
                       <div class="form-group mt-2">
                         <label for="font">Fuente Ingrediente</label>
@@ -115,8 +118,7 @@
                 </div>
     
                 <div class="form-group mt-5">
-                    <button
-                      type="submit" class="btn btn-primary col-sm"
+                    <button type="submit" class="btn btn-primary col-sm"
                     >Actualizar Ingrediente</button>
                 </div>
             </form>
@@ -137,11 +139,12 @@
                         <td>{{ selectedItem.name }}</td>
                         <td>{{ selectedItem.font }}</td>
                         <td>{{ selectedItem.value }}
-                            {{ selectedItem.typeValue }}
+                            ({{ selectedItem.typeValue }})
                         </td>
                         <td>{{ selectedItem.registerDate }}</td>
                     </tr>
                 </tbody>
+
                 <thead  *ngIf="position == 1">
                     <tr>
                         <th scope="col">Calcio</th>
@@ -152,20 +155,13 @@
                 </thead>
                 <tbody  *ngIf="position == 1">
                     <tr>
-                        <td>{{ selectedItem.calcium }}
-                            {{ selectedItem.typeValue }}
-                        </td>
-                        <td>{{ selectedItem.calories }}
-                            {{ selectedItem.typeValue }}
-                        </td>
-                        <td>{{ selectedItem.cholesterol }}
-                            {{ selectedItem.typeValue }}
-                        </td>
-                        <td>{{ selectedItem.iron }}
-                            {{ selectedItem.typeValue }}
-                        </td>
+                        <td>{{ selectedItem.calcium }} (mg)</td>
+                        <td>{{ selectedItem.calories }} (kcal)</td>
+                        <td>{{ selectedItem.cholesterol }} (mg)</td>
+                        <td>{{ selectedItem.iron }} (mg)</td>
                     </tr>
                 </tbody>
+
                 <thead  *ngIf="position == 2">
                     <th scope="col">Sodio</th>
                     <th scope="col">Insulina</th>
@@ -173,19 +169,12 @@
                     <th scope="col">Fibra Dietaria</th>
                 </thead>
                 <tbody  *ngIf="position == 2">
-                    <td>{{ selectedItem.sodium }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.insulin }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.potassium }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.dietaryFiber }}
-                        {{ selectedItem.typeValue }}
-                    </td>
+                    <td>{{ selectedItem.sodium }} (mg)</td>
+                    <td>{{ selectedItem.insulin }} (g)</td>
+                    <td>{{ selectedItem.potassium }} (mg)</td>
+                    <td>{{ selectedItem.dietaryFiber }} (g)</td>
                 </tbody>
+
                 <thead  *ngIf="position == 3">
                     <th scope="col">Fibra Dietaria Soluble</th>
                     <th scope="col">Fibra Dietaria Insoluble</th>
@@ -193,19 +182,12 @@
                     <th scope="col">Grasas Poliinsaturadas</th>
                 </thead>
                 <tbody  *ngIf="position == 3">
-                    <td>{{ selectedItem.solubleDietaryFiber }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.insolubleDietaryFiber }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.monoUnsaturatedFats }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.polyUnsaturatedFats }}
-                        {{ selectedItem.typeValue }}
-                    </td>
+                    <td>{{ selectedItem.solubleDietaryFiber }} (g)</td>
+                    <td>{{ selectedItem.insolubleDietaryFiber }} (g)</td>
+                    <td>{{ selectedItem.monoUnsaturatedFats }} (g)</td>
+                    <td>{{ selectedItem.polyUnsaturatedFats }} (g)</td>
                 </tbody>
+
                 <thead  *ngIf="position == 4">
                     <th scope="col">Carbohidratos Disponibles</th>
                     <th scope="col">Grasas Saturadas</th>
@@ -214,22 +196,13 @@
                     <th scope="col">Vitamina D</th>
                 </thead>
                 <tbody  *ngIf="position == 4">
-                    <td>{{ selectedItem.availableCarbohydrates }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.saturatedFats }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.vitaminA }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.vitaminC }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.vitaminD }}
-                        {{ selectedItem.typeValue }}
-                    </td>
+                    <td>{{ selectedItem.availableCarbohydrates }} (g)</td>
+                    <td>{{ selectedItem.saturatedFats }} (g)</td>
+                    <td>{{ selectedItem.vitaminA }} (mcg)</td>
+                    <td>{{ selectedItem.vitaminC }} (mcg)</td>
+                    <td>{{ selectedItem.vitaminD }} (mcg)</td>
                 </tbody>
+
                 <thead  *ngIf="position == 5">
                     <th scope="col">Grasas Totales</th>
                     <th scope="col">Carbohidratos Totales</th>
@@ -237,27 +210,19 @@
                     <th scope="col">Proteínas Totales</th>
                 </thead>
                 <tbody  *ngIf="position == 5">
-                    <td>{{ selectedItem.totalFats }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.totalCarbohydrates }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.totalSugars }}
-                        {{ selectedItem.typeValue }}
-                    </td>
-                    <td>{{ selectedItem.totalProteins }}
-                        {{ selectedItem.typeValue }}
-                    </td>
+                    <td>{{ selectedItem.totalFats }} (g)</td>
+                    <td>{{ selectedItem.totalCarbohydrates }} (g)</td>
+                    <td>{{ selectedItem.totalSugars }} (g)</td>
+                    <td>{{ selectedItem.totalProteins }} (g)</td>
                 </tbody>
             </table>
+
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-secondary btn-sm"
-                    (click)="onPrevious()"
+                <button type="button" class="btn btn-secondary btn-sm" (click)="onPrevious()"
                 ><i class="fas fa-arrow-circle-left"></i>
                 </button>
-                <button type="button" class="btn btn-secondary btn-sm"
-                    (click)="onNext()"
+
+                <button type="button" class="btn btn-secondary btn-sm" (click)="onNext()"
                 ><i class="fas fa-arrow-circle-right"></i>
                 </button>
             </div>

@@ -6,13 +6,13 @@ export class User {
   names: string;
   lastName: string;
   mothersLastName: string;
+  registerDate: string;
   typeUser: string;
-  email: string;
   address: string;
-  phone: number;
   commune: string;
   region: string;
-  registerDate: string;
+  email: string;
+  phone: number;
 }
 
 export class Ingredient {
@@ -20,40 +20,40 @@ export class Ingredient {
   name: string;
   font: string;
   value: number;
-  typeValue: string;
-  totalProteins: number;
-  totalFats: number;
-  saturatedFats: number;
-  monoUnsaturatedFats: number;
-  polyUnsaturatedFats: number;
-  cholesterol: number;
-  totalCarbohydrates: number;
-  availableCarbohydrates: number;
-  totalSugars: number;
-  dietaryFiber: number;
-  solubleDietaryFiber: number;
-  insolubleDietaryFiber: number;
   sodium: number;
   calcium: number;
   calories: number;
   vitaminA: number;
   vitaminC: number;
   vitaminD: number;
-  iron: number;
+  typeValue: string;
+  totalFats: number;
+  cholesterol: number;
+  totalProteins: number;
+  saturatedFats: number;
+  totalCarbohydrates: number;
+  monoUnsaturatedFats: number;
+  availableCarbohydrates: number;
+  insolubleDietaryFiber: number;
+  polyUnsaturatedFats: number;
+  solubleDietaryFiber: number;
+  registerDate: string;
+  dietaryFiber: number;
+  totalSugars: number;
   potassium: number;
   magnesium: number;
   insulin: number;
-  registerDate: string;
+  iron: number;
 }
 
 export class Food {
   id: string;
   name: string;
-  quantitiesList: Array<Quantity>;
-  idClient: string;
   portion: number;
   servingPerContainer: number;
+  quantitiesList: Array<Quantity>;
   createDate: string;
+  idClient: string;
 }
 
 export class Quantity {
@@ -63,24 +63,24 @@ export class Quantity {
 
 export class NutritionalInformation {
   id: string;
-  idClient: string;
   idFood: string;
-  portion: number;
-  servingPerContainer: number;
   energy: number;
   protein: number;
+  portion: number;
+  idClient: string;
   totalFats: number;
   saturatedFats: number;
-  monounsaturatedFats: number;
-  polyunsaturatedFats: number;
-  transFattyAcids: number;
-  cholesterol: number;
+  monoUnsaturatedFats: number;
+  polyUnsaturatedFats: number;
+  servingPerContainer: number;
   totalCarbohydrates: number;
-  totalSugars: number;
-  dietaryFiber: number;
-  solubleFiber: number;
+  transFattyAcids: number;
   insolubleFiber: number;
+  solubleFiber: number;
+  dietaryFiber: number;
+  cholesterol: number;
+  totalSugars: number;
+  createDate: string;
   insulin: number;
   sodium: number;
-  createDate: string;
 }

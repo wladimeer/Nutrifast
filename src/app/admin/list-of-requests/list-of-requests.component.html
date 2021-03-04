@@ -1,1 +1,59 @@
-<p>list-of-requests works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="card col-sm-8 mt-5 mb-5">
+            <h4 class="text-center mt-3 mb-4">Lista de Solicitudes</h4>
+
+            <div class="table-responsive mt-2">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Fecha de Creación</th>
+                            <th scope="col">Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="requestList?.length > 0; else noContent">
+                        <tr *ngFor="let item of requestList">
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.createDate }}</td>
+                            <td *ngIf="item.state == 0">
+                                Pendiente
+                            </td>
+                            <td *ngIf="item.state == 1" style="color: green;">
+                                Aprobada
+                            </td>
+                            <td *ngIf="item.state == 2" style="color: red;">
+                                Rechazada
+                            </td>
+                            
+                            <button type="button" (click)="onApprove(item)" title="Aprobar"
+                                class="btn btn-success mr-2" *ngIf="item.state == 0"
+                            ><i class="fas fa-check-circle"></i>
+                            </button>
+                            <button type="button" (click)="onReject(item)" title="Rechazar"
+                                class="btn btn-danger" *ngIf="item.state == 0"
+                            ><i class="fas fa-times-circle"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-success mr-2"
+                                *ngIf="item.state > 0" disabled
+                            ><i class="fas fa-check-circle"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger"
+                                *ngIf="item.state > 0" disabled
+                            ><i class="fas fa-times-circle"></i>
+                            </button>
+                        </tr>
+                    </tbody>
+
+                    <ng-template #noContent>
+                        <tr>
+                            <td colspan="4">No hay Solicitudes Recibidas Aún</td>
+                        </tr>
+                    </ng-template>
+                </table>
+            </div>
+          </div>
+    </div>
+</div>

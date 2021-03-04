@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { User, Ingredient, Quantity } from '../model/object';
+import { User, Ingredient, Quantity, Food, NutritionalInformation } from '../model/object';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { v4 as uuid } from 'uuid';
@@ -122,9 +122,10 @@ export class FirebaseService {
 
   updateIngredient(form: any) {
     return new Promise((resolve, reject) => {
-      this.obtainKey(form.id).then(response => {
-        this.database.list('Ingredients').update(
-          String(response), {name: form.name, font: form.font})
+      this.obtainKey(form.id, 'Ingredients').then(response => {
+        this.database.list('Ingredients').update(String(response),
+          { name: form.name, font: form.font }
+        )
         .then(response => {
           resolve('El ingrediente se actualizó exitosamente!');
         })
@@ -137,10 +138,8 @@ export class FirebaseService {
 
   deleteIngredient(id: string) {
     return new Promise((resolve, reject) => {
-      this.obtainKey(id).then(response => {
-        this.database.list('Ingredients').remove(
-          String(response)
-        )
+      this.obtainKey(id, 'Ingredients').then(response => {
+        this.database.list('Ingredients').remove(String(response))
         .then(response => {
           resolve('El ingrediente se eliminó exitosamente!');
         })
@@ -151,15 +150,148 @@ export class FirebaseService {
     });
   }
 
-  obtainKey(id: string) {
+  obtainKey(id: string, list: string) {
     return new Promise((resolve, reject) => {
-      this.database.list('Ingredients')
-      .snapshotChanges().subscribe(response => {
-        response.forEach(itemIngredient => {
-          if(itemIngredient.payload.exportVal().id == id) {
-            resolve(itemIngredient.key);
+      this.database.list(list).snapshotChanges().subscribe(response => {
+        response.forEach((itemObject: any) => {
+          if(itemObject.payload.exportVal().id == id) {
+            resolve(itemObject.key);
           }
         });
+      });
+    });
+  }
+
+  sendRequest(form: any) {
+    return new Promise((resolve, reject) => {
+      form.idClient = JSON.parse(localStorage.getItem('user')).id;
+      form.createDate = moment().format('DD-MM-YYYY');
+      form.id = uuid();
+      form.state = 0;
+
+      this.database.list('Requests').push(form)
+      .then(response => {
+        resolve('La solicitud de alimento se envío exitosamente!');
+      })
+      .catch(response => {
+        reject('La solicitud de alimento no pudo ser enviada!');
+      });
+    });
+  }
+
+  readRequest() {
+    return new Promise((resolve, reject) => {
+      this.database.list('Requests').valueChanges()
+      .subscribe((response: Array<Food>) => {
+        resolve(response);
+      });
+    });
+  }
+
+  updateStateRequest(form: any) {
+    return new Promise((resolve, reject) => {
+      this.obtainKey(form.id, 'Requests').then(response => {
+        this.database.list('Requests').update(String(response),
+          { state: form.state }
+        )
+        .then(response => {
+          switch(form.state) {
+            case 1: resolve('La solicitud de alimento se aprobó exitosamente!');
+              break;
+            case 2: resolve('La solicitud de alimento se rechazó exitosamente!');
+            break;
+          }
+        })
+        .catch(response => {
+          switch(form.state) {
+            case 1: reject('La solicitud de alimento no se pudo aprobar!');
+              break;
+            case 2: reject('La solicitud de alimento no se pudo rechazar!');
+            break;
+          }
+        });
+      });
+    });
+  }
+
+  createNutritionalInformation(form: any) {
+    return new Promise((resolve, reject) => {
+      form.energy = Number(
+        (form.energy).toFixed()
+      );
+
+      form.protein = Number(
+        (form.protein).toFixed(1)
+      );
+
+      form.portion = Number(
+        (form.portion).toFixed(1)
+      );
+
+      form.totalFats = Number(
+        (form.totalFats).toFixed(1)
+      );
+
+      form.totalSugars = Number(
+        (form.totalSugars).toFixed(1)
+      );
+
+      form.saturatedFats = Number(
+        (form.saturatedFats).toFixed(1)
+      );
+
+      form.monoUnsaturatedFats = Number(
+        (form.monoUnsaturatedFats).toFixed(1)
+      );
+
+      form.polyUnsaturatedFats = Number(
+        (form.polyUnsaturatedFats).toFixed(1)
+      );
+
+      form.servingPerContainer = Number(
+        (form.servingPerContainer).toFixed(1)
+      );
+
+      form.totalCarbohydrates = Number(
+        (form.totalCarbohydrates).toFixed(1)
+      );
+
+      form.transFattyAcids = Number(
+        (form.transFattyAcids).toFixed(1)
+      );
+
+      form.insolubleFiber = Number(
+        (form.insolubleFiber).toFixed(1)
+      );
+
+      form.solubleFiber = Number(
+        (form.solubleFiber).toFixed(1)
+      );
+
+      form.dietaryFiber = Number(
+        (form.dietaryFiber).toFixed(1)
+      );
+
+      form.cholesterol = Number(
+        (form.cholesterol).toFixed(1)
+      );
+
+      form.insulin = Number(
+        (form.insulin).toFixed(1)
+      );
+
+      form.sodium = Number(
+        (form.sodium).toFixed(1)
+      );
+
+      form.createDate = moment().format('DD-MM-YYYY');
+      form.id = uuid();
+      this.database.list('NutritionalInformation').push(form)
+      .then(response => {
+        resolve('La Información nutricional ya está disponible!');
+      })
+      .catch(response => {
+        reject('La información nutricional no se pudo crear!');
       });
     });
   }

@@ -19,7 +19,7 @@ export class NewIngredientComponent implements OnInit {
   onSave() {
     if (this.ingredientForm.invalid) {
       Swal.fire({ icon: 'error', title: 'Atención', text: (
-        'Verifica que todos los campos estén completos'
+        'Verifica que todos los campos estén completos!'
       )});
       return;
     }

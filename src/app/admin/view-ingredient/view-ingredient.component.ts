@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Ingredient } from 'src/app/model/object';
 import { FirebaseService } from 'src/app/service/firebase.service';
+import { Ingredient } from 'src/app/model/object';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './view-ingredient.component.html',
   styleUrls: ['./view-ingredient.component.css']
 })
+
 export class ViewIngredientComponent implements OnInit {
   public ingredientList: Array<Ingredient>;
   public ingredientForm: FormGroup;
@@ -47,7 +48,7 @@ export class ViewIngredientComponent implements OnInit {
   onModify() {
     if (this.ingredientForm.invalid) {
       Swal.fire({ icon: 'error', title: 'Atención', text: (
-        'Verifica que todos los campos estén completos'
+        'Verifica que todos los campos estén completos!'
       )});
       return;
     }
@@ -58,6 +59,7 @@ export class ViewIngredientComponent implements OnInit {
     })
     .catch(response => {
       Swal.fire({ icon: 'error', title: 'Atención', text: String(response) });
+      return;
     });
   }
 
@@ -69,6 +71,7 @@ export class ViewIngredientComponent implements OnInit {
     })
     .catch(response => {
       Swal.fire({ icon: 'error', title: 'Atención', text: String(response) });
+      return;
     });
   }
 
