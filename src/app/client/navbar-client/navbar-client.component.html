@@ -7,24 +7,19 @@
         <a class="nav-link dropdown-toggle" aria-haspopup="true"
           aria-expanded="false" data-toggle="dropdown" role="button"
           style="cursor: pointer;"
-        >Opciones</a>
+        >Más Opciones</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="profileClient">Perfil</a>
+          <a class="dropdown-item" routerLink="profileClient">Mi Perfil</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="foodRequest">
-            Solicitud de Alimento
-          </a>
-          <a class="dropdown-item" routerLink="nutritionalInformation">
-            Información Nutricional
-          </a>
+          <a class="dropdown-item" routerLink="nutritionalInformation">Lista de Solicitudes</a>
+          <a class="dropdown-item" routerLink="foodRequest">Solicitud de Alimento</a>
         </div>
       </li>
   
       <li class="nav-item active">
-        <a class="nav-link" 
-          style="cursor: pointer;"
-          (click)="onLogout()"
-        >Cerrar Sesión</a>
+        <a class="nav-link"  style="cursor: pointer;" (click)="onLogout()">
+          Cerrar Sesión
+        </a>
       </li>
     </ul>
   </div>

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NavbarAdminComponent } from './navbar-admin.component';
 
 describe('NavbarAdminComponent', () => {

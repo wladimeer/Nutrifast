@@ -8,12 +8,12 @@ import Swal from 'sweetalert2'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
   constructor(
-    private firebase: FirebaseService,
-    private formBuilder: FormBuilder
+    private firebase: FirebaseService, private formBuilder: FormBuilder
   ) {}
 
   onLogin() {
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.firebase.login(this.loginForm.value).catch(response => {
-      Swal.fire({ icon: 'error', title: 'Atención', text: response });
+      Swal.fire({ icon: 'error', title: 'Atención', text: String(response) });
       return;
     })
   }

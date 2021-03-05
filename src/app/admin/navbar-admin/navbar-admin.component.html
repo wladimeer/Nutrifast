@@ -9,10 +9,8 @@
           style="cursor: pointer;"
         >Gestión Ingredientes</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="viewIngredient"
-          >Ver Ingredientes</a>
-          <a class="dropdown-item" routerLink="newIngredient"
-          >Nuevo Ingrediente</a>
+          <a class="dropdown-item" routerLink="viewIngredient">Ver Ingredientes</a>
+          <a class="dropdown-item" routerLink="newIngredient">Nuevo Ingrediente</a>
         </div>
       </li>
 
@@ -20,20 +18,19 @@
         <a class="nav-link dropdown-toggle" aria-haspopup="true"
           aria-expanded="false" data-toggle="dropdown" role="button"
           style="cursor: pointer;"
-        >Opciones</a>
+        >Más Opciones</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="profileAdmin">Perfil</a>
+          <a class="dropdown-item" routerLink="profileAdmin">Mi Perfil</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="listOfRequest"
-          >Lista de Solicitudes</a>
-          <a class="dropdown-item" routerLink="nutritionalInformationCreated"
-          >Información Nutricional</a>
+          <a class="dropdown-item" routerLink="listOfRequest">Lista de Solicitudes</a>
+          <a class="dropdown-item" routerLink="nutritionalInformationCreated">Solicitudes Aprobadas</a>
         </div>
       </li>
       
       <li class="nav-item active">
-        <a class="nav-link" style="cursor: pointer;" (click)="onLogout()"
-        >Cerrar Sesión</a>
+        <a class="nav-link" style="cursor: pointer;" (click)="onLogout()">
+          Cerrar Sesión
+        </a>
       </li>
     </ul>
   </div>

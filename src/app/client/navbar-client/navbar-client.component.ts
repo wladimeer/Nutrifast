@@ -6,6 +6,7 @@ import { FirebaseService } from '../../service/firebase.service'
   templateUrl: './navbar-client.component.html',
   styleUrls: ['./navbar-client.component.css']
 })
+
 export class NavbarClientComponent implements OnInit {
   public user: string = '';
 

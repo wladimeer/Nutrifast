@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './food-request.component.html',
   styleUrls: ['./food-request.component.css']
 })
+
 export class FoodRequestComponent implements OnInit {
   public ingredientList: Array<Ingredient>;  
   public foodForm: FormGroup;

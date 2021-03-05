@@ -6,18 +6,11 @@
       <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
         <div class="form-group mt-4">
           <label for="rut">RUT</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="rut"
-            id="rut" required
-          />
+          <input type="text" class="form-control" formControlName="rut" id="rut" required/>
 
           <div
-            class="alert alert-danger text-center mt-3"
-            *ngIf="rut.invalid && rut.touched"
-            validateRut
-            role="alert"
+            class="alert alert-danger text-center mt-3" *ngIf="rut.invalid && rut.touched"
+            validateRut role="alert"
           >
             Debes Ingresar un RUT Valido con el Siguiente Formato
             11111111-1.
@@ -26,16 +19,10 @@
 
         <div class="form-group mt-4">
           <label for="names">Nombres</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="names"
-            id="names"
-          />
+          <input type="text" class="form-control" formControlName="names" id="names"/>
 
           <div
-            class="alert alert-danger text-center mt-3"
-            *ngIf="names.invalid && names.touched"
+            class="alert alert-danger text-center mt-3" *ngIf="names.invalid && names.touched"
             role="alert"
           >
             Debes Ingresar Uno o Varios Nombres de Máximo
@@ -45,16 +32,10 @@
 
         <div class="form-group mt-4">
           <label for="lastName">Apellido Paterno</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="lastName"
-            id="lastName"
-          />
+          <input type="text" class="form-control" formControlName="lastName" id="lastName"/>
 
           <div
-            class="alert alert-danger text-center mt-3"
-            *ngIf="lastName.invalid  && lastName.touched"
+            class="alert alert-danger text-center mt-3" *ngIf="lastName.invalid  && lastName.touched"
             role="alert"
           >
             Debes Ingresar un Apellido Paterno de Máximo
@@ -64,16 +45,10 @@
 
         <div class="form-group mt-4">
           <label for="mothersLastName">Apellido Materno</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="mothersLastName"
-            id="mothersLastName"
-          />
+          <input type="text" class="form-control" formControlName="mothersLastName" id="mothersLastName"/>
 
           <div
-            class="alert alert-danger text-center mt-3"
-            *ngIf="mothersLastName.invalid  && mothersLastName.touched"
+            class="alert alert-danger text-center mt-3" *ngIf="mothersLastName.invalid  && mothersLastName.touched"
             role="alert"
           >
             Debes Ingresar un Apellido Materno de Máximo
@@ -83,16 +58,10 @@
 
         <div class="form-group mt-4">
           <label for="email">Correo Electrónico</label>
-          <input
-            type="email"
-            class="form-control"
-            formControlName="email"
-            id="email"
-          />
+          <input type="email" class="form-control" formControlName="email" id="email"/>
 
           <div
-            class="alert alert-danger text-center mt-3"
-            *ngIf="email.invalid  && email.touched"
+            class="alert alert-danger text-center mt-3" *ngIf="email.invalid  && email.touched"
             role="alert"
           >
             Debes Ingresar un Correo Electrónico que
@@ -102,16 +71,10 @@
 
         <div class="form-group mt-4">
           <label for="address">Dirección</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="address"
-            id="address"
-          />
+          <input type="text" class="form-control" formControlName="address" id="address"/>
 
           <div
-            class="alert alert-danger text-center mt-3"
-            *ngIf="address.invalid  && address.touched"
+            class="alert alert-danger text-center mt-3" *ngIf="address.invalid  && address.touched"
             role="alert"
           >
             Debes Ingresar una Dirección que Sea Valida
@@ -121,16 +84,9 @@
 
         <div class="form-group mt-4">
           <label for="phone">Teléfono</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="phone"
-            id="phone"
-          />
+          <input type="text" class="form-control" formControlName="phone" id="phone"/>
 
-          <div
-            class="alert alert-danger text-center mt-3"
-            *ngIf="phone.invalid  && phone.touched"
+          <div class="alert alert-danger text-center mt-3" *ngIf="phone.invalid  && phone.touched"
             role="alert"
           >
             Debes Ingresar un Teléfono o Celular
@@ -140,24 +96,15 @@
 
         <div class="form-group mt-4">
           <label for="region">Región</label><br />
-          <select
-            (change)="loadCommunes()"
-            formControlName="region"
-            class="form-control"
-            id="region"
-          >
+          <select (change)="loadCommunes()" formControlName="region" class="form-control" id="region">
             <option value="">Selecciona</option>
-            <option 
-              *ngFor="let item of regionsList"
-              value="{{ item.name }}"
-            >
+            <option *ngFor="let item of regionsList" value="{{ item.name }}">
               {{ item.name }}
             </option>
           </select>
 
           <div
-            class="alert alert-danger text-center mt-3"
-            *ngIf="region.invalid  && region.touched"
+            class="alert alert-danger text-center mt-3" *ngIf="region.invalid  && region.touched"
             role="alert"
           >
             Debes Seleccionar una Región de la Lista.
@@ -166,23 +113,15 @@
 
         <div class="form-group mt-4">
           <label for="commune">Comuna</label><br />
-          <select
-            formControlName="commune"
-            class="form-control"
-            id="commune"
-          >
+          <select formControlName="commune" class="form-control" id="commune">
             <option value="">Selecciona</option>
-            <option
-              *ngFor="let item of communesList"
-              value="{{ item.name }}"
-            >
+            <option *ngFor="let item of communesList" value="{{ item.name }}">
               {{ item.name }}
             </option>
           </select>
 
           <div
-            class="alert alert-danger text-center mt-3"
-            *ngIf="commune.invalid  && commune.touched"
+            class="alert alert-danger text-center mt-3" *ngIf="commune.invalid  && commune.touched"
             role="alert"
           >
             Debes Seleccionar una Comuna de la Lista.
@@ -191,16 +130,10 @@
 
         <div class="form-group mt-4">
           <label for="password">Contraseña</label>
-          <input
-            type="password"
-            class="form-control"
-            formControlName="password"
-            id="password"
-          />
+          <input type="password" class="form-control" formControlName="password" id="password"/>
 
           <div
-            class="alert alert-danger text-center mt-3"
-            *ngIf="password.invalid  && password.touched"
+            class="alert alert-danger text-center mt-3" *ngIf="password.invalid  && password.touched"
             role="alert"
           >
             Debes Ingresar una Contraseña de Máximo
@@ -209,10 +142,7 @@
         </div>
 
         <div class="form-group mt-5">
-          <button
-            type="submit"
-            class="btn btn-primary col-sm"
-          >
+          <button type="submit" class="btn btn-primary col-sm">
             Crear Cuenta
           </button>
         </div>

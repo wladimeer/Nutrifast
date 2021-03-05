@@ -11,6 +11,7 @@ import { NutritionalInformationComponent } from './client/nutritional-informatio
 import { ProfileAdminComponent } from './admin/profile-admin/profile-admin.component';
 import { ListOfRequestsComponent } from './admin/list-of-requests/list-of-requests.component';
 import { NutritionalInformationCreatedComponent } from './admin/nutritional-information-created/nutritional-information-created.component';
+import { ForgetComponent } from './public/forget/forget.component';
 import { LoginComponent } from './public/login/login.component';
 import { PublicGuard } from './public/guard/public.guard';
 import { ClientGuard } from './public/guard/client.guard';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent, canActivate: [PublicGuard] },
   { path: 'login', component: LoginComponent, canActivate: [PublicGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [PublicGuard] },
+  { path: 'forget', component: ForgetComponent, canActivate: [PublicGuard] },
   { path: 'admin', component: NavbarAdminComponent, canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'profileAdmin', pathMatch: 'full'},

@@ -25,8 +25,8 @@ export class ViewIngredientComponent implements OnInit {
 
   onView(ingredient: any) {
     this.position = 0;
-    this.tableView = true, this.formModify = false;
     ingredient.selected = true, this.selectedItem = ingredient;
+    this.tableView = true, this.formModify = false;
   }
 
   onPrevious() {

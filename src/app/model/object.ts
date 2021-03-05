@@ -73,6 +73,7 @@ export class NutritionalInformation {
   monoUnsaturatedFats: number;
   polyUnsaturatedFats: number;
   servingPerContainer: number;
+  availableCarbohydrates: number;
   totalCarbohydrates: number;
   transFattyAcids: number;
   insolubleFiber: number;

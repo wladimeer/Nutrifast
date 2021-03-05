@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
   templateUrl: './list-of-requests.component.html',
   styleUrls: ['./list-of-requests.component.css']
 })
+
 export class ListOfRequestsComponent implements OnInit {
   public requestList: Array<Food>;
 
@@ -25,7 +26,8 @@ export class ListOfRequestsComponent implements OnInit {
         solubleFiber: 0, transFattyAcids: 0, dietaryFiber: 0,
         portion: request.portion, idClient: request.idClient,
         servingPerContainer: request.servingPerContainer,
-        totalSugars: 0, insulin: 0, idFood: request.id
+        totalSugars: 0, insulin: 0, idFood: request.id,
+        availableCarbohydrates: 0
       });
 
       request.quantitiesList.forEach((request: any) => {
@@ -63,6 +65,10 @@ export class ListOfRequestsComponent implements OnInit {
 
             nutritionalInformation.totalCarbohydrates += (
               ((itemIngredient.totalCarbohydrates * percentage) /100)
+            );
+
+            nutritionalInformation.availableCarbohydrates += (
+              ((itemIngredient.availableCarbohydrates * percentage) /100)
             );
 
             nutritionalInformation.insolubleFiber += (

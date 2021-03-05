@@ -1,7 +1,7 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { User, Ingredient, Quantity, Food, NutritionalInformation } from '../model/object';
+import { User, Ingredient, Food, NutritionalInformation } from '../model/object';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { v4 as uuid } from 'uuid';
@@ -21,15 +21,10 @@ export class FirebaseService {
 
   login(form: any) {
     return new Promise((resolve, reject) => {
-      this.fireauth.signInWithEmailAndPassword(
-        form.email, form.password
-      )
+      this.fireauth.signInWithEmailAndPassword(form.email, form.password)
       .then(response => {
         this.readUsers().then((users: Array<User>) => {
-          let user = (users.filter(
-            r => r.email === form.email)
-          )[0];
-
+          let user = (users.filter(r => r.email === form.email))[0];
           localStorage.setItem('user', JSON.stringify(user));
 
           switch(user.typeUser) {
@@ -62,9 +57,7 @@ export class FirebaseService {
   }
 
   register(form: any) {
-    this.fireauth.createUserWithEmailAndPassword(
-      form.email, form.password
-    )
+    this.fireauth.createUserWithEmailAndPassword(form.email, form.password)
     .then(response => {
       form.id = response.user.uid;
       form.registerDate = moment().format('DD-MM-YYYY');
@@ -83,11 +76,28 @@ export class FirebaseService {
       .subscribe((response: Array<User>) => {
         resolve(response);
       });
-    })
+    });
+  }
+
+  searchUser(id: string) {
+    return new Promise((resolve, reject) => {
+      this.database.list('Users').valueChanges()
+      .subscribe((response: Array<User>) => {
+        resolve(response.find(r => r.id == id));
+      });
+    });
   }
 
   resetPassword(email: string) {
-    return this.fireauth.sendPasswordResetEmail(email);
+    return new Promise((resolve, reject) => {
+      this.fireauth.sendPasswordResetEmail(email)
+      .then(response => {
+        resolve('Se envió un correo de recuperación a tu correo electrónico!');
+      })
+      .catch(response => {
+        reject('No se pudo enviar el correo de recuperación a tu correo!');
+      });
+    });
   }
 
   logout() {
@@ -214,6 +224,15 @@ export class FirebaseService {
     });
   }
 
+  searchRequest(id: string) {
+    return new Promise((resolve, reject) => {
+      this.database.list('Requests').valueChanges()
+      .subscribe((response: Array<Food>) => {
+        resolve(response.find(r => r.id == id));
+      });
+    });
+  }
+
   createNutritionalInformation(form: any) {
     return new Promise((resolve, reject) => {
       form.energy = Number(
@@ -288,10 +307,28 @@ export class FirebaseService {
       form.id = uuid();
       this.database.list('NutritionalInformation').push(form)
       .then(response => {
-        resolve('La Información nutricional ya está disponible!');
+        resolve('La información nutricional ya está disponible!');
       })
       .catch(response => {
         reject('La información nutricional no se pudo crear!');
+      });
+    });
+  }
+
+  readNutritionalInformation() {
+    return new Promise((resolve, reject) => {
+      this.database.list('NutritionalInformation').valueChanges()
+      .subscribe((response: Array<NutritionalInformation>) => {
+        resolve(response);
+      });
+    });
+  }
+
+  searchNutritionalInformation(id: string) {
+    return new Promise((resolve, reject) => {
+      this.database.list('NutritionalInformation').valueChanges()
+      .subscribe((response: Array<NutritionalInformation>) => {
+        resolve(response.find(r => r.id == id));
       });
     });
   }

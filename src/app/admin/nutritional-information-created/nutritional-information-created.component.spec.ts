@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NutritionalInformationCreatedComponent } from './nutritional-information-created.component';
 
 describe('NutritionalInformationCreatedComponent', () => {
