@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   public async onRegister() {
     if (this.registerForm.invalid) {
       Swal.fire({ icon: 'error', title: 'Atención', text: (
-        'Verifica que todos los campos estén completos'
+        'Verifica que todos los campos estén completos!'
       )});
       return;
     } else {
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
           )
       ) {
         Swal.fire({ icon: 'error', title: 'Atención', text: (
-          'El correo electrónico o RUT ya están siendo utilizados'
+          'El correo electrónico o RUT ya están siendo utilizados!'
         )});
         return;
       } else {

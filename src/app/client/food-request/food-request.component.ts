@@ -104,6 +104,8 @@ export class FoodRequestComponent implements OnInit {
         ['', [Validators.required]],
       portion:
         ['', [Validators.required]],
+      typeValue:
+        ['', [Validators.required]],
       quantitiesList:
         this.formBuilder.array([])
     });

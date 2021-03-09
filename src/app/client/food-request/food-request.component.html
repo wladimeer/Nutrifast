@@ -15,12 +15,27 @@
                                     />
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col">
                                 <div class="form-group mt-2">
                                     <label for="portion">Porción</label>
                                     <input type="number" class="form-control" formControlName="portion"
                                         id="portion"
                                     />
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="form-group mt-2">
+                                    <label for="typeValue">Tipo de Valor</label>
+                                    <select class="form-control" formControlName="typeValue" id="typeValue">
+                                        <option value="">Selecciona</option>
+                                        <option value="Gramos">Gramos</option>
+                                        <option value="Microgramos">Microgramos</option>
+                                        <option value="Miligramos">Miligramos</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -43,6 +58,7 @@
                                         </select>
                                     </div>
                                 </div>
+                                
                                 <div class="col">
                                     <div class="form-group mt-2">
                                         <label>Porcentaje {{ i + 1 }}</label>

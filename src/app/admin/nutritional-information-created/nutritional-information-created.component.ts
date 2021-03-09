@@ -7,21 +7,42 @@ import { Food, NutritionalInformation, User } from 'src/app/model/object';
   templateUrl: './nutritional-information-created.component.html',
   styleUrls: ['./nutritional-information-created.component.css']
 })
+
 export class NutritionalInformationCreatedComponent implements OnInit {
   public selectedList: NutritionalInformation;
   public informationList = [];
-  // public viewData = false;
+  public viewData = false;
 
   constructor(
     private firebase: FirebaseService
   ) {}
 
-  onMakePDF(id: string) {
+  onView(id: string) {
     this.firebase.searchNutritionalInformation(id)
     .then((response: NutritionalInformation) => {
-      this.selectedList = response;      
+      if (response.typeValue == 'Gramos') {
+        response.typeValue = 'g';
+      }
+
+      if (response.typeValue == 'Miligramos') {
+        response.typeValue = 'mg';
+      }
+
+      if (response.typeValue == 'Microgramos') {
+        response.typeValue = 'mcg';
+      }
+
+      this.selectedList = response;
     });
-    // this.viewData = true;
+
+    this.viewData = true;
+  }
+
+  onHide() {
+    this.viewData = false, this.selectedList = null;
+  }
+
+  onMakePDF(id: string) {
   }
   
   loadNutritionalInformation() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/service/firebase.service';
-import { Food, Ingredient, NutritionalInformation } from 'src/app/model/object';
+import { Food, Ingredient } from 'src/app/model/object';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,16 +18,15 @@ export class ListOfRequestsComponent implements OnInit {
 
   onApprove(request: any) {
     this.firebase.readIngredients().then((response: Array<Ingredient>) => {
-      // let nutritionalInformation = new NutritionalInformation();
       let nutritionalInformation = ({
         energy: 0, totalFats: 0, protein: 0, saturatedFats: 0,
         monoUnsaturatedFats: 0, polyUnsaturatedFats: 0, sodium: 0,
         cholesterol: 0, totalCarbohydrates: 0, insolubleFiber: 0,
+        availableCarbohydrates: 0, typeValue: request.typeValue,
         solubleFiber: 0, transFattyAcids: 0, dietaryFiber: 0,
         portion: request.portion, idClient: request.idClient,
         servingPerContainer: request.servingPerContainer,
-        totalSugars: 0, insulin: 0, idFood: request.id,
-        availableCarbohydrates: 0
+        totalSugars: 0, insulin: 0, idFood: request.id
       });
 
       request.quantitiesList.forEach((request: any) => {

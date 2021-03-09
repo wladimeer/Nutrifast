@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
     if (this.loginForm.invalid) {
       Swal.fire({ icon: 'error', title: 'Atención', text: (
-        'Verifica que todos los campos estén completos'
+        'Verifica que todos los campos estén completos!'
       )});
       return;
     }

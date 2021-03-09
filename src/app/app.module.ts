@@ -13,10 +13,10 @@ import { NutritionalInformationComponent } from './client/nutritional-informatio
 import { ProfileAdminComponent } from './admin/profile-admin/profile-admin.component';
 import { ListOfRequestsComponent } from './admin/list-of-requests/list-of-requests.component';
 import { NutritionalInformationCreatedComponent } from './admin/nutritional-information-created/nutritional-information-created.component';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage'
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireStorageModule } from '@angular/fire/storage'
-import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';

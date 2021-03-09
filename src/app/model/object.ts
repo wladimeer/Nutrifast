@@ -53,6 +53,7 @@ export class Food {
   servingPerContainer: number;
   quantitiesList: Array<Quantity>;
   createDate: string;
+  typeValue: string;
   idClient: string;
 }
 
@@ -82,6 +83,7 @@ export class NutritionalInformation {
   cholesterol: number;
   totalSugars: number;
   createDate: string;
+  typeValue: string;
   insulin: number;
   sodium: number;
 }

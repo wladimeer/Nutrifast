@@ -19,7 +19,7 @@ export class ForgetComponent implements OnInit {
   onRecover() {
     if (this.forgetForm.invalid) {
       Swal.fire({ icon: 'error', title: 'Atención', text: (
-        'Verifica que hayas ingresado el correo electrónico'
+        'Verifica que hayas ingresado el correo electrónico!'
       )});
       return;
     }
