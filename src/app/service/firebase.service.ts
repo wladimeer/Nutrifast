@@ -29,10 +29,10 @@ export class FirebaseService {
 
           switch(user.typeUser) {
             case 'Cliente':
-              this.redirect.navigate(['client/profileClient']);
+              this.redirect.navigate(['client/profileclient']);
               break;
             case 'Administrador':
-              this.redirect.navigate(['admin/profileAdmin']);
+              this.redirect.navigate(['admin/profileadmin']);
               break;
             default:
               this.redirect.navigate(['']);
@@ -66,7 +66,7 @@ export class FirebaseService {
       
       this.database.list('Users').push(form);
       localStorage.setItem('user', JSON.stringify(form));
-      this.redirect.navigate(['client/profileClient']);
+      this.redirect.navigate(['client/profileclient']);
     });
   }
 

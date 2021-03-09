@@ -24,19 +24,19 @@ const routes: Routes = [
   { path: 'forget', component: ForgetComponent, canActivate: [PublicGuard] },
   { path: 'admin', component: NavbarAdminComponent, canActivate: [AdminGuard],
     children: [
-      { path: '', redirectTo: 'profileAdmin', pathMatch: 'full'},
-      { path: 'newIngredient', component: NewIngredientComponent },
-      { path: 'viewIngredient', component: ViewIngredientComponent },
-      { path: 'approvedRequests', component: ApprovedRequestsComponent},
-      { path: 'profileAdmin', component: ProfileAdminComponent },
-      { path: 'listOfRequest', component: ListOfRequestsComponent }  
+      { path: '', redirectTo: 'profileadmin', pathMatch: 'full'},
+      { path: 'newingredient', component: NewIngredientComponent },
+      { path: 'viewingredient', component: ViewIngredientComponent },
+      { path: 'approvedrequests', component: ApprovedRequestsComponent},
+      { path: 'listofrequest', component: ListOfRequestsComponent },
+      { path: 'profileadmin', component: ProfileAdminComponent }
   ]},
   { path: 'client', component: NavbarClientComponent, canActivate: [ClientGuard],
     children: [
-      { path: '', redirectTo: 'profileClient', pathMatch: 'full'},
-      { path: 'myRequests', component: MyRequestsComponent },
-      { path: 'profileClient', component: ProfileClientComponent },
-      { path: 'foodRequest', component: FoodRequestComponent }
+      { path: '', redirectTo: 'profileclient', pathMatch: 'full'},
+      { path: 'profileclient', component: ProfileClientComponent },
+      { path: 'myrequests', component: MyRequestsComponent },
+      { path: 'foodrequest', component: FoodRequestComponent }
   ]},
   { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
