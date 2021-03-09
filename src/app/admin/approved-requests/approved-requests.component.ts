@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../../service/firebase.service';
 import { Food, NutritionalInformation, User } from 'src/app/model/object';
+import { FirebaseService } from '../../service/firebase.service';
 
 @Component({
-  selector: 'app-nutritional-information-created',
-  templateUrl: './nutritional-information-created.component.html',
-  styleUrls: ['./nutritional-information-created.component.css']
+  selector: 'app-approved-requests',
+  templateUrl: './approved-requests.component.html',
+  styleUrls: ['./approved-requests.component.css']
 })
 
-export class NutritionalInformationCreatedComponent implements OnInit {
+export class ApprovedRequestsComponent implements OnInit {
   public selectedList: NutritionalInformation;
   public informationList = [];
   public viewData = false;

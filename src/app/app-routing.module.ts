@@ -6,11 +6,11 @@ import { NavbarClientComponent } from './client/navbar-client/navbar-client.comp
 import { ProfileClientComponent } from './client/profile-client/profile-client.component';
 import { NewIngredientComponent } from './admin/new-ingredient/new-ingredient.component';
 import { ViewIngredientComponent } from './admin/view-ingredient/view-ingredient.component';
-import { FoodRequestComponent } from './client/food-request/food-request.component';
-import { NutritionalInformationComponent } from './client/nutritional-information/nutritional-information.component';
-import { ProfileAdminComponent } from './admin/profile-admin/profile-admin.component';
+import { ApprovedRequestsComponent } from './admin/approved-requests/approved-requests.component';
 import { ListOfRequestsComponent } from './admin/list-of-requests/list-of-requests.component';
-import { NutritionalInformationCreatedComponent } from './admin/nutritional-information-created/nutritional-information-created.component';
+import { ProfileAdminComponent } from './admin/profile-admin/profile-admin.component';
+import { FoodRequestComponent } from './client/food-request/food-request.component';
+import { MyRequestsComponent } from './client/my-requests/my-requests.component';
 import { ForgetComponent } from './public/forget/forget.component';
 import { LoginComponent } from './public/login/login.component';
 import { PublicGuard } from './public/guard/public.guard';
@@ -25,20 +25,16 @@ const routes: Routes = [
   { path: 'admin', component: NavbarAdminComponent, canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'profileAdmin', pathMatch: 'full'},
-      { path: 'nutritionalInformationCreated',
-        component: NutritionalInformationCreatedComponent,
-      },
       { path: 'newIngredient', component: NewIngredientComponent },
       { path: 'viewIngredient', component: ViewIngredientComponent },
+      { path: 'approvedRequests', component: ApprovedRequestsComponent},
       { path: 'profileAdmin', component: ProfileAdminComponent },
-      { path: 'listOfRequest', component: ListOfRequestsComponent },
+      { path: 'listOfRequest', component: ListOfRequestsComponent }  
   ]},
   { path: 'client', component: NavbarClientComponent, canActivate: [ClientGuard],
     children: [
       { path: '', redirectTo: 'profileClient', pathMatch: 'full'},
-      { path: 'nutritionalInformation',
-        component: NutritionalInformationComponent
-      },
+      { path: 'myRequests', component: MyRequestsComponent },
       { path: 'profileClient', component: ProfileClientComponent },
       { path: 'foodRequest', component: FoodRequestComponent }
   ]},
