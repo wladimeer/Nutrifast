@@ -5,60 +5,60 @@ import { FirebaseService } from '../../service/firebase.service';
 @Component({
   selector: 'app-approved-requests',
   templateUrl: './approved-requests.component.html',
-  styleUrls: ['./approved-requests.component.css']
+  styleUrls: ['./approved-requests.component.css'],
 })
-
 export class ApprovedRequestsComponent implements OnInit {
   public selectedList: NutritionalInformation;
   public informationList = [];
   public viewData = false;
 
-  constructor(
-    private firebase: FirebaseService
-  ) {}
+  constructor(private firebase: FirebaseService) {}
 
   onView(id: string) {
-    this.firebase.searchNutritionalInformation(id)
-    .then((response: NutritionalInformation) => {
-      if (response.typeValue == 'Gramos') {
-        response.typeValue = 'g';
-      }
+    this.firebase
+      .searchNutritionalInformation(id)
+      .then((response: NutritionalInformation) => {
+        switch (response.typeValue) {
+          case 'Gramos':
+            response.typeValue = 'g';
+            break;
+          case 'Miligramos':
+            response.typeValue = 'mg';
+            break;
+          case 'Microgramos':
+            response.typeValue = 'mcg';
+            break;
+        }
 
-      if (response.typeValue == 'Miligramos') {
-        response.typeValue = 'mg';
-      }
-
-      if (response.typeValue == 'Microgramos') {
-        response.typeValue = 'mcg';
-      }
-
-      this.selectedList = response;
-    });
+        this.selectedList = response;
+      });
 
     this.viewData = true;
   }
 
   onHide() {
-    this.viewData = false, this.selectedList = null;
+    (this.viewData = false), (this.selectedList = null);
   }
 
-  onMakePDF(id: string) {
-  }
-  
+  onMakePDF(id: string) {}
+
   loadNutritionalInformation() {
-    this.firebase.readNutritionalInformation()
-    .then((response: Array<NutritionalInformation>) => {
-      response.forEach((response: NutritionalInformation) => {
-        this.firebase.searchRequest(response.idFood).then((food: Food) => {
-          this.firebase.searchUser(food.idClient).then((user: User) => {
-            this.informationList.push({
-              id :response.id, rut: user.rut,
-              food: food.name, date: response.createDate
+    this.firebase
+      .readNutritionalInformation()
+      .then((response: Array<NutritionalInformation>) => {
+        response.forEach((response: NutritionalInformation) => {
+          this.firebase.searchRequest(response.idFood).then((food: Food) => {
+            this.firebase.searchUser(food.idClient).then((user: User) => {
+              this.informationList.push({
+                id: response.id,
+                rut: user.rut,
+                food: food.name,
+                date: response.createDate,
+              });
             });
           });
         });
       });
-    });
   }
 
   ngOnInit(): void {

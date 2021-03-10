@@ -1,393 +1,516 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="card col-sm-8 mt-5 mb-5">
+    <div class="card col-8 mt-5 mb-5">
       <h4 class="text-center mt-3 mb-4">Nuevo Ingrediente</h4>
 
       <form [formGroup]="ingredientForm" (ngSubmit)="onSave()">
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="name">Nombre Ingrediente</label>
-              <input type="text" class="form-control" formControlName="name" id="name"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.name.errors && form.name.touched"
-                role="alert"
-              >
-                Debes Ingresar un Nombre Valido Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="name">Nombre Ingrediente</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              id="name"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.name.errors && form.name.touched"
+              role="alert"
+            >
+              Debes Ingresar un Nombre Valido Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="font">Fuente Ingrediente</label>
-              <input type="text" class="form-control" formControlName="font" id="font"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.font.errors && form.font.touched"
-                role="alert"
-              >
-                Debes Ingresar una Fuente Valida Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="font">Fuente Ingrediente</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="font"
+              id="font"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.font.errors && form.font.touched"
+              role="alert"
+            >
+              Debes Ingresar una Fuente Valida Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="typeValue">Tipo de Valor</label>
-              <select class="form-control" formControlName="typeValue" id="typeValue">
-                <option value="">Selecciona</option>
-                <option value="Gramos">Gramos</option>
-                <option value="Microgramos">Microgramos</option>
-                <option value="Miligramos">Miligramos</option>
-              </select>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.typeValue.errors && form.typeValue.touched"
-                role="alert"
-              >
-                Debes Seleccionar un Tipo de Valor Para el Valor a Ingresar.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="typeValue">Tipo de Valor</label>
+            <select
+              class="form-control"
+              formControlName="typeValue"
+              id="typeValue"
+            >
+              <option value="">Selecciona</option>
+              <option value="Gramos">Gramos</option>
+              <option value="Microgramos">Microgramos</option>
+              <option value="Miligramos">Miligramos</option>
+            </select>
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.typeValue.errors && form.typeValue.touched"
+              role="alert"
+            >
+              Debes Seleccionar un Tipo de Valor Para el Valor a Ingresar.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="value">Valor del Ingrediente</label>
-              <input type="number" class="form-control" formControlName="value" id="value"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.value.errors && form.value.touched"
-                role="alert"
-              >
-                Debes Ingresar un Valor Valido Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="value">Valor del Ingrediente</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="value"
+              id="value"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.value.errors && form.value.touched"
+              role="alert"
+            >
+              Debes Ingresar un Valor Valido Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="totalProteins">Proteínas Totales</label>
-              <input type="number" class="form-control" formControlName="totalProteins" id="totalProteins"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.totalProteins.errors && form.totalProteins.touched"
-                role="alert"
-              >
-                Debes Ingresar Proteínas Totales Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="totalProteins">Proteínas Totales</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="totalProteins"
+              id="totalProteins"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.totalProteins.errors && form.totalProteins.touched"
+              role="alert"
+            >
+              Debes Ingresar Proteínas Totales Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="totalFats">Grasas Totales</label>
-              <input type="number" class="form-control" formControlName="totalFats" id="totalFats"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.totalFats.errors && form.totalFats.touched"
-                role="alert"
-              >
-                Debes Ingresar Grasas Totales Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="totalFats">Grasas Totales</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="totalFats"
+              id="totalFats"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.totalFats.errors && form.totalFats.touched"
+              role="alert"
+            >
+              Debes Ingresar Grasas Totales Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="saturatedFats">Grasas Saturadas</label>
-              <input type="number" class="form-control" formControlName="saturatedFats" id="saturatedFats"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.saturatedFats.errors && form.saturatedFats.touched"
-                role="alert"
-              >
-                Debes Ingresar Grasas Saturadas Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="saturatedFats">Grasas Saturadas</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="saturatedFats"
+              id="saturatedFats"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.saturatedFats.errors && form.saturatedFats.touched"
+              role="alert"
+            >
+              Debes Ingresar Grasas Saturadas Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="monoUnsaturatedFats">Grasas Monoinsaturadas</label>
-              <input type="number" class="form-control" formControlName="monoUnsaturatedFats" id="monoUnsaturatedFats"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.monoUnsaturatedFats.errors && form.monoUnsaturatedFats.touched"
-                role="alert"
-              >
-                Debes Ingresar Grasas Monoinsaturadas Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="monoUnsaturatedFats">Grasas Monoinsaturadas</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="monoUnsaturatedFats"
+              id="monoUnsaturatedFats"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="
+                form.monoUnsaturatedFats.errors &&
+                form.monoUnsaturatedFats.touched
+              "
+              role="alert"
+            >
+              Debes Ingresar Grasas Monoinsaturadas Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="polyUnsaturatedFats">Grasas Poliinsaturadas</label>
-              <input type="number" class="form-control" formControlName="polyUnsaturatedFats" id="polyUnsaturatedFats"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.polyUnsaturatedFats.errors && form.polyUnsaturatedFats.touched"
-                role="alert"
-              >
-                Debes Ingresar Grasas Poliinsaturadas Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="polyUnsaturatedFats">Grasas Poliinsaturadas</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="polyUnsaturatedFats"
+              id="polyUnsaturatedFats"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="
+                form.polyUnsaturatedFats.errors &&
+                form.polyUnsaturatedFats.touched
+              "
+              role="alert"
+            >
+              Debes Ingresar Grasas Poliinsaturadas Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="cholesterol">Colesterol</label>
-              <input type="number" class="form-control" formControlName="cholesterol" id="cholesterol"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.cholesterol.errors && form.cholesterol.touched"
-                role="alert"
-              >
-                Debes Ingresar Colesterol Para el Ingrediente.
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="totalCarbohydrates">Carbohidratos Totales</label>
-              <input type="number" class="form-control" formControlName="totalCarbohydrates" id="totalCarbohydrates"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.totalCarbohydrates.errors && form.totalCarbohydrates.touched"
-                role="alert"
-              >
-                Debes Ingresar Carbohidratos Totales Para el Ingrediente.
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="availableCarbohydrates">Carbohidratos Disponibles</label>
-              <input type="number" class="form-control" formControlName="availableCarbohydrates" id="availableCarbohydrates"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.availableCarbohydrates.errors && form.availableCarbohydrates.touched"
-                role="alert"
-              >
-                Debes Ingresar Carbohidratos Disponibles Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="cholesterol">Colesterol</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="cholesterol"
+              id="cholesterol"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.cholesterol.errors && form.cholesterol.touched"
+              role="alert"
+            >
+              Debes Ingresar Colesterol Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="totalSugars">Azúcares Totales</label>
-              <input type="number" class="form-control" formControlName="totalSugars" id="totalSugars"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.totalSugars.errors && form.totalSugars.touched"
-                role="alert"
-              >
-                Debes Ingresar Azúcares Totales Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="totalCarbohydrates">Carbohidratos Totales</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="totalCarbohydrates"
+              id="totalCarbohydrates"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="
+                form.totalCarbohydrates.errors &&
+                form.totalCarbohydrates.touched
+              "
+              role="alert"
+            >
+              Debes Ingresar Carbohidratos Totales Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="dietaryFiber">Fibra Dietética</label>
-              <input type="number" class="form-control" formControlName="dietaryFiber" id="dietaryFiber"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.dietaryFiber.errors && form.dietaryFiber.touched"
-                role="alert"
-              >
-                Debes Ingresar Fibra Dietética Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="availableCarbohydrates"
+              >Carbohidratos Disponibles</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              formControlName="availableCarbohydrates"
+              id="availableCarbohydrates"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="
+                form.availableCarbohydrates.errors &&
+                form.availableCarbohydrates.touched
+              "
+              role="alert"
+            >
+              Debes Ingresar Carbohidratos Disponibles Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="solubleDietaryFiber">Fibra Dietética Soluble</label>
-              <input type="number" class="form-control" formControlName="solubleDietaryFiber" id="solubleDietaryFiber"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.solubleDietaryFiber.errors && form.solubleDietaryFiber.touched"
-                role="alert"
-              >
-                Debes Ingresar Fibra Dietética Soluble Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="totalSugars">Azúcares Totales</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="totalSugars"
+              id="totalSugars"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.totalSugars.errors && form.totalSugars.touched"
+              role="alert"
+            >
+              Debes Ingresar Azúcares Totales Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="insolubleDietaryFiber">Fibra Dietética Insoluble</label>
-              <input type="number" class="form-control" formControlName="insolubleDietaryFiber" id="insolubleDietaryFiber"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.insolubleDietaryFiber.errors && form.insolubleDietaryFiber.touched"
-                role="alert"
-              >
-                Debes Ingresar Fibra Dietética Insoluble Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="dietaryFiber">Fibra Dietética</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="dietaryFiber"
+              id="dietaryFiber"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.dietaryFiber.errors && form.dietaryFiber.touched"
+              role="alert"
+            >
+              Debes Ingresar Fibra Dietética Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="sodium">Sodio</label>
-              <input type="number" class="form-control" formControlName="sodium" id="sodium"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.sodium.errors && form.sodium.touched"
-                role="alert"
-              >
-                Debes Ingresar Sodio Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="solubleDietaryFiber">Fibra Dietética Soluble</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="solubleDietaryFiber"
+              id="solubleDietaryFiber"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="
+                form.solubleDietaryFiber.errors &&
+                form.solubleDietaryFiber.touched
+              "
+              role="alert"
+            >
+              Debes Ingresar Fibra Dietética Soluble Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="calcium">Calcio</label>
-              <input type="number" class="form-control" formControlName="calcium" id="calcium"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.calcium.errors && form.calcium.touched"
-                role="alert"
-              >
-                Debes Ingresar Calcio Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="insolubleDietaryFiber">Fibra Dietética Insoluble</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="insolubleDietaryFiber"
+              id="insolubleDietaryFiber"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="
+                form.insolubleDietaryFiber.errors &&
+                form.insolubleDietaryFiber.touched
+              "
+              role="alert"
+            >
+              Debes Ingresar Fibra Dietética Insoluble Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="magnesium">Magnesio</label>
-              <input type="number" class="form-control" formControlName="magnesium" id="magnesium"/>
-      
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.magnesium.errors && form.magnesium.touched"
-                role="alert"
-              >
-                Debes Ingresar Magnesio Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="sodium">Sodio</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="sodium"
+              id="sodium"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.sodium.errors && form.sodium.touched"
+              role="alert"
+            >
+              Debes Ingresar Sodio Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="vitaminA">Vitamina A</label>
-              <input type="number" class="form-control" formControlName="vitaminA" id="vitaminA"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.vitaminA.errors && form.vitaminA.touched"
-                role="alert"
-              >
-                Debes Ingresar Vitamina A Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="calcium">Calcio</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="calcium"
+              id="calcium"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.calcium.errors && form.calcium.touched"
+              role="alert"
+            >
+              Debes Ingresar Calcio Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="vitaminC">Vitamina C</label>
-              <input type="number" class="form-control" formControlName="vitaminC" id="vitaminC"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.vitaminC.errors && form.vitaminC.touched"
-                role="alert"
-              >
-                Debes Ingresar Vitamina C Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="magnesium">Magnesio</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="magnesium"
+              id="magnesium"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.magnesium.errors && form.magnesium.touched"
+              role="alert"
+            >
+              Debes Ingresar Magnesio Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="vitaminD">Vitamina D</label>
-              <input type="number" class="form-control" formControlName="vitaminD" id="vitaminD"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.vitaminD.errors && form.vitaminD.touched"
-                role="alert"
-              >
-                Debes Ingresar Vitamina D Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="vitaminA">Vitamina A</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="vitaminA"
+              id="vitaminA"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.vitaminA.errors && form.vitaminA.touched"
+              role="alert"
+            >
+              Debes Ingresar Vitamina A Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="iron">Hierro</label>
-              <input type="number" class="form-control" formControlName="iron" id="iron"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.iron.errors && form.iron.touched"
-                role="alert"
-              >
-                Debes Ingresar Hierro Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="vitaminC">Vitamina C</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="vitaminC"
+              id="vitaminC"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.vitaminC.errors && form.vitaminC.touched"
+              role="alert"
+            >
+              Debes Ingresar Vitamina C Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="potassium">Potasio</label>
-              <input type="number" class="form-control" formControlName="potassium" id="potassium"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.potassium.errors && form.potassium.touched"
-                role="alert"
-              >
-                Debes Ingresar Potasio Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="vitaminD">Vitamina D</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="vitaminD"
+              id="vitaminD"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.vitaminD.errors && form.vitaminD.touched"
+              role="alert"
+            >
+              Debes Ingresar Vitamina D Para el Ingrediente.
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="calories">Calorías</label>
-              <input type="number" class="form-control" formControlName="calories" id="calories"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.calories.errors && form.calories.touched"
-                role="alert"
-              >
-                Debes Ingresar Calorías Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="iron">Hierro</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="iron"
+              id="iron"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.iron.errors && form.iron.touched"
+              role="alert"
+            >
+              Debes Ingresar Hierro Para el Ingrediente.
             </div>
           </div>
-          <div class="col">
-            <div class="form-group mt-2">
-              <label for="insulin">Insulina</label>
-              <input type="number" class="form-control" formControlName="insulin" id="insulin"/>
-    
-              <div
-                class="alert alert-danger text-center mt-3" *ngIf="form.insulin.errors && form.insulin.touched"
-                role="alert"
-              >
-                Debes Ingresar Insulina Para el Ingrediente.
-              </div>
+          <div class="form-group mt-2 col">
+            <label for="potassium">Potasio</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="potassium"
+              id="potassium"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.potassium.errors && form.potassium.touched"
+              role="alert"
+            >
+              Debes Ingresar Potasio Para el Ingrediente.
             </div>
           </div>
         </div>
-        
-        <div class="form-group mt-5">
-          <button type="submit" class="btn btn-primary col-sm">
+
+        <div class="row">
+          <div class="form-group mt-2 col">
+            <label for="calories">Calorías</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="calories"
+              id="calories"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.calories.errors && form.calories.touched"
+              role="alert"
+            >
+              Debes Ingresar Calorías Para el Ingrediente.
+            </div>
+          </div>
+          <div class="form-group mt-2 col">
+            <label for="insulin">Insulina</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="insulin"
+              id="insulin"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.insulin.errors && form.insulin.touched"
+              role="alert"
+            >
+              Debes Ingresar Insulina Para el Ingrediente.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mt-4">
+          <button type="submit" class="btn btn-primary col">
             Registrar Ingrediente
           </button>
         </div>

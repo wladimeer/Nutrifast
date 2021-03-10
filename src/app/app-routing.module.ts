@@ -20,30 +20,41 @@ import { AdminGuard } from './public/guard/admin.guard';
 const routes: Routes = [
   { path: '', component: LoginComponent, canActivate: [PublicGuard] },
   { path: 'login', component: LoginComponent, canActivate: [PublicGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [PublicGuard] },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [PublicGuard],
+  },
   { path: 'forget', component: ForgetComponent, canActivate: [PublicGuard] },
-  { path: 'admin', component: NavbarAdminComponent, canActivate: [AdminGuard],
+  {
+    path: 'admin',
+    component: NavbarAdminComponent,
+    canActivate: [AdminGuard],
     children: [
-      { path: '', redirectTo: 'profileadmin', pathMatch: 'full'},
+      { path: '', redirectTo: 'profileadmin', pathMatch: 'full' },
       { path: 'newingredient', component: NewIngredientComponent },
       { path: 'viewingredient', component: ViewIngredientComponent },
-      { path: 'approvedrequests', component: ApprovedRequestsComponent},
+      { path: 'approvedrequests', component: ApprovedRequestsComponent },
       { path: 'listofrequest', component: ListOfRequestsComponent },
-      { path: 'profileadmin', component: ProfileAdminComponent }
-  ]},
-  { path: 'client', component: NavbarClientComponent, canActivate: [ClientGuard],
+      { path: 'profileadmin', component: ProfileAdminComponent },
+    ],
+  },
+  {
+    path: 'client',
+    component: NavbarClientComponent,
+    canActivate: [ClientGuard],
     children: [
-      { path: '', redirectTo: 'profileclient', pathMatch: 'full'},
+      { path: '', redirectTo: 'profileclient', pathMatch: 'full' },
       { path: 'profileclient', component: ProfileClientComponent },
       { path: 'myrequests', component: MyRequestsComponent },
-      { path: 'foodrequest', component: FoodRequestComponent }
-  ]},
-  { path: '**', redirectTo: '', pathMatch: 'full'}
+      { path: 'foodrequest', component: FoodRequestComponent },
+    ],
+  },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-
 export class AppRoutingModule {}

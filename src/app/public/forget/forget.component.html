@@ -1,36 +1,43 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="card col-sm-6 mt-5 mb-5">
+    <div class="card col-7 mt-5 mb-5">
       <h3 class="text-center mt-3">Recuperar Contraseña</h3>
 
       <form [formGroup]="forgetForm" (ngSubmit)="onRecover()">
-        <div class="form-group mt-4">
-          <label for="email">Correo Electrónico</label>
-          <input type="email" class="form-control" formControlName="email" id="email"/>
+        <div class="row">
+          <div class="form-group mt-4 col">
+            <label for="email">Correo Electrónico</label>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              id="email"
+            />
 
-          <div
-            class="alert alert-danger text-center mt-3" *ngIf="email.invalid  && email.touched"
-            role="alert"
-          >
-            Debes Ingresar un Correo Electrónico que
-            Sea Valido.
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="email.invalid && email.touched"
+              role="alert"
+            >
+              Debes Ingresar un Correo Electrónico que Sea Valido.
+            </div>
           </div>
         </div>
 
-        <div class="form-group mt-5">
-          <button type="submit" class="btn btn-primary col-sm">
+        <div class="form-group mt-4">
+          <button type="submit" class="btn btn-primary col">
             Recuperar Contraseña
           </button>
         </div>
       </form>
 
       <div class="form-group mt-4">
-        <div class="text-center" style="font-size: 15px;">
+        <div class="text-center" style="font-size: 15px">
           <label>¿Recordaste tu contraseña?&nbsp;</label>
           <a routerLink="/login">Iniciar Sesión</a>
         </div>
 
-        <div class="text-center" style="font-size: 15px;">
+        <div class="text-center" style="font-size: 15px">
           <label>¿No tienes una cuenta?&nbsp;</label>
           <a routerLink="/register">Crear Cuenta</a>
         </div>

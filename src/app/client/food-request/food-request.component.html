@@ -1,102 +1,133 @@
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="card col-sm-8 mt-5 mb-5">
-            <h4 class="text-center mt-3 mb-4">Solicitud de Alimento</h4>
-      
-            <form [formGroup]="foodForm" (ngSubmit)="onRequest()">
-                <div class="row justify-content-center" *ngIf="quantitiesList.length > 0">
-                    <div class="col-10">
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group mt-2">
-                                    <label for="name">Nombre</label>
-                                    <input type="text" class="form-control" formControlName="name"
-                                        id="name"
-                                    />
-                                </div>
-                            </div>
-                        </div>
+  <div class="row justify-content-center">
+    <div class="card col-8 mt-5 mb-5">
+      <h4 class="text-center mt-3 mb-4">Solicitud de Alimento</h4>
 
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group mt-2">
-                                    <label for="portion">Porción</label>
-                                    <input type="number" class="form-control" formControlName="portion"
-                                        id="portion"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="form-group mt-2">
-                                    <label for="typeValue">Tipo de Valor</label>
-                                    <select class="form-control" formControlName="typeValue" id="typeValue">
-                                        <option value="">Selecciona</option>
-                                        <option value="Gramos">Gramos</option>
-                                        <option value="Microgramos">Microgramos</option>
-                                        <option value="Miligramos">Miligramos</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div formArrayName="quantitiesList" *ngFor="let form of quantitiesList.controls; let i = index">
-                    <div class="row justify-content-center" [formGroupName]="i">
-                        <div class="col-1"></div>
-                        <div class="col-10">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group mt-2">
-                                        <label>Ingrediente {{ i + 1 }}</label>
-                                        <select class="form-control" formControlName="idIngredient">
-                                            <option value="">Selecciona</option>
-                                            <option *ngFor="let item of ingredientList" value="{{ item.id }}">
-                                                {{ item.name }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="col">
-                                    <div class="form-group mt-2">
-                                        <label>Porcentaje {{ i + 1 }}</label>
-                                        <select class="form-control" formControlName="ingredientPercentage">
-                                            <option value="">Selecciona</option>
-                                            <option *ngFor="let number of numbers" value="{{ number }}">
-                                                {{ number }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <div class="form-group mt-2">
-                                <span type="button" (click)="onRemoveForm(i)" title="Eliminar"
-                                >
-                                    <i class="fas fa-times-circle" style="color: red;"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+      <form [formGroup]="foodForm" (ngSubmit)="onRequest()">
+        <div
+          class="row justify-content-center"
+          *ngIf="quantitiesList.length > 0"
+        >
+          <div class="col-10">
+            <div class="row">
+              <div class="col">
                 <div class="form-group mt-2">
-                    <button type="button" class="btn btn-light col-sm"
-                        title="Agregar Ingrediente" (click)="onNewForm()"
-                    >
-                        <i class="fas fa-plus-circle" style="color: green;"></i>
-                    </button>
+                  <label for="name">Nombre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="name"
+                    id="name"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="form-group mt-2">
+                  <label for="portion">Porción</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    formControlName="portion"
+                    id="portion"
+                  />
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group mt-2">
+                  <label for="typeValue">Tipo de Valor</label>
+                  <select
+                    class="form-control"
+                    formControlName="typeValue"
+                    id="typeValue"
+                  >
+                    <option value="">Selecciona</option>
+                    <option value="Gramos">Gramos</option>
+                    <option value="Microgramos">Microgramos</option>
+                    <option value="Miligramos">Miligramos</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          formArrayName="quantitiesList"
+          *ngFor="let form of quantitiesList.controls; let i = index"
+        >
+          <div class="row justify-content-center" [formGroupName]="i">
+            <div class="col-1"></div>
+            <div class="col-10">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group mt-2">
+                    <label>Ingrediente {{ i + 1 }}</label>
+                    <select class="form-control" formControlName="idIngredient">
+                      <option value="">Selecciona</option>
+                      <option
+                        *ngFor="let item of ingredientList"
+                        value="{{ item.id }}"
+                      >
+                        {{ item.name }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
 
-                <div class="form-group">
-                    <button [disabled]="quantitiesList.length == 0"
-                      type="submit" class="btn btn-primary col-sm"
-                    >Enviar Solicitud</button>
+                <div class="col">
+                  <div class="form-group mt-2">
+                    <label>Porcentaje {{ i + 1 }}</label>
+                    <select
+                      class="form-control"
+                      formControlName="ingredientPercentage"
+                    >
+                      <option value="">Selecciona</option>
+                      <option
+                        *ngFor="let number of numbers"
+                        value="{{ number }}"
+                      >
+                        {{ number }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
-            </form>
+              </div>
+            </div>
+            <div class="col-1">
+              <div class="form-group mt-2">
+                <span type="button" (click)="onRemoveForm(i)" title="Eliminar">
+                  <i class="fas fa-times-circle" style="color: red"></i>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="form-group mt-2">
+          <button
+            type="button"
+            class="btn btn-light col-sm"
+            title="Agregar Ingrediente"
+            (click)="onNewForm()"
+          >
+            <i class="fas fa-plus-circle" style="color: green"></i>
+          </button>
+        </div>
+
+        <div class="form-group">
+          <button
+            [disabled]="quantitiesList.length == 0"
+            type="submit"
+            class="btn btn-primary col-sm"
+          >
+            Enviar Solicitud
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>

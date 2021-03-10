@@ -1,218 +1,271 @@
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="card col-sm-8 mt-5 mb-5">
-            <h4 class="text-center mt-3 mb-4">Ver Ingredientes</h4>
-        
-            <div class="table-responsive mt-2">
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Fuente</th>
-                            <th scope="col">Fecha de Registro</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody *ngIf="ingredientList?.length > 0; else noContent">
-                        <tr *ngFor="let item of ingredientList">
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.font }}</td>
-                            <td>{{ item.registerDate }}</td>
-                            
-                            <button type="button" (click)="onView(item)"
-                                class="btn btn-success mt-1" title="Ver"
-                                *ngIf="!tableView && !item.selected"
-                            ><i class="fas fa-eye"></i>
-                            </button>
-                            <button type="button" (click)="loadFormModify(item)"
-                                class="btn btn-primary mt-1 mr-2 ml-2" title="Actualizar"
-                                *ngIf="!tableView && !item.selected"
-                            ><i class="fas fa-sync-alt"></i>
-                            </button>
-                            <button type="button" (click)="onRemove(item.id)"
-                                class="btn btn-danger mt-1" title="Eliminar"
-                                *ngIf="!tableView && !item.selected"
-                            ><i class="fas fa-times-circle"></i>
-                            </button>
+  <div class="row justify-content-center">
+    <div class="card col-8 mt-5 mb-5">
+      <h4 class="text-center mt-3 mb-4">Ver Ingredientes</h4>
 
-                            <button type="button" class="btn btn-success mt-1"
-                                *ngIf="tableView && !item.selected" disabled
-                            ><i class="fas fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-primary mt-1 mr-2 ml-2"
-                                *ngIf="tableView && !item.selected" disabled
-                            ><i class="fas fa-sync-alt"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger mt-1"
-                                *ngIf="tableView && !item.selected" disabled
-                            ><i class="fas fa-times-circle"></i>
-                            </button>
+      <div class="row mt-2">
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Fuente</th>
+              <th scope="col">Fecha de Registro</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="ingredientList?.length > 0; else noContent">
+            <tr *ngFor="let item of ingredientList">
+              <td>{{ item.name }}</td>
+              <td>{{ item.font }}</td>
+              <td>{{ item.registerDate }}</td>
 
-                            <button type="button" (click)="onHide(item)"
-                                class="btn btn-success mt-1" title="Ocultar"
-                                *ngIf="item.selected && tableView"
-                            ><i class="fas fa-eye-slash"></i>
-                            </button>
-                            <button type="button" class="btn btn-primary mt-1 mr-2 ml-2"
-                                *ngIf="tableView && item.selected" disabled
-                            ><i class="fas fa-sync-alt"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger mt-1"
-                                *ngIf="tableView && item.selected" disabled
-                            ><i class="fas fa-times-circle"></i>
-                            </button>
-                        </tr>
-                    </tbody>
-                
-                    <ng-template #noContent>
-                        <tr>
-                            <td colspan="4">No hay Ingredientes Creados Aún</td>
-                        </tr>
-                    </ng-template>
-                </table>
+              <button
+                type="button"
+                (click)="onView(item)"
+                class="btn btn-success mt-1"
+                title="Ver"
+                *ngIf="!tableView && !item.selected"
+              >
+                <i class="fas fa-eye"></i>
+              </button>
+              <button
+                type="button"
+                (click)="loadFormModify(item)"
+                class="btn btn-primary mt-1 mr-2 ml-2"
+                title="Actualizar"
+                *ngIf="!tableView && !item.selected"
+              >
+                <i class="fas fa-sync-alt"></i>
+              </button>
+              <button
+                type="button"
+                (click)="onRemove(item.id)"
+                class="btn btn-danger mt-1"
+                title="Eliminar"
+                *ngIf="!tableView && !item.selected"
+              >
+                <i class="fas fa-times-circle"></i>
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-success mt-1"
+                *ngIf="tableView && !item.selected"
+                disabled
+              >
+                <i class="fas fa-eye"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary mt-1 mr-2 ml-2"
+                *ngIf="tableView && !item.selected"
+                disabled
+              >
+                <i class="fas fa-sync-alt"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger mt-1"
+                *ngIf="tableView && !item.selected"
+                disabled
+              >
+                <i class="fas fa-times-circle"></i>
+              </button>
+
+              <button
+                type="button"
+                (click)="onHide(item)"
+                class="btn btn-success mt-1"
+                title="Ocultar"
+                *ngIf="item.selected && tableView"
+              >
+                <i class="fas fa-eye-slash"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary mt-1 mr-2 ml-2"
+                *ngIf="tableView && item.selected"
+                disabled
+              >
+                <i class="fas fa-sync-alt"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger mt-1"
+                *ngIf="tableView && item.selected"
+                disabled
+              >
+                <i class="fas fa-times-circle"></i>
+              </button>
+            </tr>
+          </tbody>
+
+          <ng-template #noContent>
+            <tr>
+              <td colspan="4">No hay Ingredientes Creados Aún</td>
+            </tr>
+          </ng-template>
+        </table>
+      </div>
+
+      <div *ngIf="formModify" class="card p-4 mb-4">
+        <form [formGroup]="ingredientForm" (ngSubmit)="onModify()">
+          <input type="hidden" formControlName="id" />
+          <div class="row">
+            <div class="form-group mt-2 col">
+              <label for="name">Nombre Ingrediente</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="name"
+                id="name"
+              />
+
+              <div
+                class="alert alert-danger text-center mt-3"
+                *ngIf="form.name.errors && form.name.touched"
+                role="alert"
+              >
+                Debes Ingresar un Nombre Valido Para el Ingrediente.
+              </div>
             </div>
 
-            <div *ngIf="formModify" class="card p-4 mb-4">
-                <form [formGroup]="ingredientForm" (ngSubmit)="onModify()">
-                    <input type="hidden" formControlName="id">
-                    <div class="row">
-                        <div class="col">
-                        <div class="form-group mt-2">
-                            <label for="name">Nombre Ingrediente</label>
-                            <input type="text" class="form-control" formControlName="name" id="name"/>
-                
-                            <div class="alert alert-danger text-center mt-3" *ngIf="form.name.errors && form.name.touched"
-                            role="alert"
-                            >
-                            Debes Ingresar un Nombre Valido Para el Ingrediente.
-                            </div>
-                        </div>
-                        </div>
+            <div class="form-group mt-2 col">
+              <label for="font">Fuente Ingrediente</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="font"
+                id="font"
+              />
 
-                        <div class="col">
-                        <div class="form-group mt-2">
-                            <label for="font">Fuente Ingrediente</label>
-                            <input type="text" class="form-control" formControlName="font" id="font"/>
-                
-                            <div class="alert alert-danger text-center mt-3" *ngIf="form.font.errors && form.font.touched"
-                            role="alert"
-                            >
-                            Debes Ingresar una Fuente Valida Para el Ingrediente.
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-        
-                    <div class="form-group mt-5">
-                        <button type="submit" class="btn btn-primary col-sm"
-                        >Actualizar Ingrediente</button>
-                    </div>
-                </form>
+              <div
+                class="alert alert-danger text-center mt-3"
+                *ngIf="form.font.errors && form.font.touched"
+                role="alert"
+              >
+                Debes Ingresar una Fuente Valida Para el Ingrediente.
+              </div>
             </div>
+          </div>
 
-            <div *ngIf="tableView" class="table-responsive card p-4 mb-4">
-                <table class="table text-center">
-                    <thead class="p-1" *ngIf="position == 0">
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Fuente</th>
-                            <th scope="col">Valor Total</th>
-                            <th scope="col">Fecha de Registro</th>
-                        </tr>
-                    </thead>
-                    <tbody *ngIf="position == 0">
-                        <tr>
-                            <td>{{ selectedItem.name }}</td>
-                            <td>{{ selectedItem.font }}</td>
-                            <td>{{ selectedItem.value }}
-                                ({{ selectedItem.typeValue }})
-                            </td>
-                            <td>{{ selectedItem.registerDate }}</td>
-                        </tr>
-                    </tbody>
+          <div class="form-group mt-4">
+            <button type="submit" class="btn btn-primary col">
+              Actualizar Ingrediente
+            </button>
+          </div>
+        </form>
+      </div>
 
-                    <thead  *ngIf="position == 1">
-                        <tr>
-                            <th scope="col">Calcio</th>
-                            <th scope="col">Calorías</th>
-                            <th scope="col">Colesterol</th>
-                            <th scope="col">Hierro</th>
-                        </tr>
-                    </thead>
-                    <tbody  *ngIf="position == 1">
-                        <tr>
-                            <td>{{ selectedItem.calcium }} (mg)</td>
-                            <td>{{ selectedItem.calories }} (kcal)</td>
-                            <td>{{ selectedItem.cholesterol }} (mg)</td>
-                            <td>{{ selectedItem.iron }} (mg)</td>
-                        </tr>
-                    </tbody>
+      <div *ngIf="tableView" class="card p-4 mb-4">
+        <table class="table text-center">
+          <thead class="p-1" *ngIf="position == 0">
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Fuente</th>
+              <th scope="col">Valor Total</th>
+              <th scope="col">Fecha de Registro</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="position == 0">
+            <tr>
+              <td>{{ selectedItem.name }}</td>
+              <td>{{ selectedItem.font }}</td>
+              <td>{{ selectedItem.value }} ({{ selectedItem.typeValue }})</td>
+              <td>{{ selectedItem.registerDate }}</td>
+            </tr>
+          </tbody>
 
-                    <thead  *ngIf="position == 2">
-                        <th scope="col">Sodio</th>
-                        <th scope="col">Insulina</th>
-                        <th scope="col">Potasio</th>
-                        <th scope="col">Fibra Dietaria</th>
-                    </thead>
-                    <tbody  *ngIf="position == 2">
-                        <td>{{ selectedItem.sodium }} (mg)</td>
-                        <td>{{ selectedItem.insulin }} (g)</td>
-                        <td>{{ selectedItem.potassium }} (mg)</td>
-                        <td>{{ selectedItem.dietaryFiber }} (g)</td>
-                    </tbody>
+          <thead *ngIf="position == 1">
+            <tr>
+              <th scope="col">Calcio</th>
+              <th scope="col">Calorías</th>
+              <th scope="col">Colesterol</th>
+              <th scope="col">Hierro</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="position == 1">
+            <tr>
+              <td>{{ selectedItem.calcium }} (mg)</td>
+              <td>{{ selectedItem.calories }} (kcal)</td>
+              <td>{{ selectedItem.cholesterol }} (mg)</td>
+              <td>{{ selectedItem.iron }} (mg)</td>
+            </tr>
+          </tbody>
 
-                    <thead  *ngIf="position == 3">
-                        <th scope="col">Fibra Dietaria Soluble</th>
-                        <th scope="col">Fibra Dietaria Insoluble</th>
-                        <th scope="col">Grasas Monoinsaturadas</th>
-                        <th scope="col">Grasas Poliinsaturadas</th>
-                    </thead>
-                    <tbody  *ngIf="position == 3">
-                        <td>{{ selectedItem.solubleDietaryFiber }} (g)</td>
-                        <td>{{ selectedItem.insolubleDietaryFiber }} (g)</td>
-                        <td>{{ selectedItem.monoUnsaturatedFats }} (g)</td>
-                        <td>{{ selectedItem.polyUnsaturatedFats }} (g)</td>
-                    </tbody>
+          <thead *ngIf="position == 2">
+            <th scope="col">Sodio</th>
+            <th scope="col">Insulina</th>
+            <th scope="col">Potasio</th>
+            <th scope="col">Fibra Dietaria</th>
+          </thead>
+          <tbody *ngIf="position == 2">
+            <td>{{ selectedItem.sodium }} (mg)</td>
+            <td>{{ selectedItem.insulin }} (g)</td>
+            <td>{{ selectedItem.potassium }} (mg)</td>
+            <td>{{ selectedItem.dietaryFiber }} (g)</td>
+          </tbody>
 
-                    <thead  *ngIf="position == 4">
-                        <th scope="col">Carbohidratos Disponibles</th>
-                        <th scope="col">Grasas Saturadas</th>
-                        <th scope="col">Vitamina A</th>
-                        <th scope="col">Vitamina C</th>
-                        <th scope="col">Vitamina D</th>
-                    </thead>
-                    <tbody  *ngIf="position == 4">
-                        <td>{{ selectedItem.availableCarbohydrates }} (g)</td>
-                        <td>{{ selectedItem.saturatedFats }} (g)</td>
-                        <td>{{ selectedItem.vitaminA }} (mcg)</td>
-                        <td>{{ selectedItem.vitaminC }} (mcg)</td>
-                        <td>{{ selectedItem.vitaminD }} (mcg)</td>
-                    </tbody>
+          <thead *ngIf="position == 3">
+            <th scope="col">Fibra Dietaria Soluble</th>
+            <th scope="col">Fibra Dietaria Insoluble</th>
+            <th scope="col">Grasas Monoinsaturadas</th>
+            <th scope="col">Grasas Poliinsaturadas</th>
+          </thead>
+          <tbody *ngIf="position == 3">
+            <td>{{ selectedItem.solubleDietaryFiber }} (g)</td>
+            <td>{{ selectedItem.insolubleDietaryFiber }} (g)</td>
+            <td>{{ selectedItem.monoUnsaturatedFats }} (g)</td>
+            <td>{{ selectedItem.polyUnsaturatedFats }} (g)</td>
+          </tbody>
 
-                    <thead  *ngIf="position == 5">
-                        <th scope="col">Grasas Totales</th>
-                        <th scope="col">Carbohidratos Totales</th>
-                        <th scope="col">Azúcares Totales</th>
-                        <th scope="col">Proteínas Totales</th>
-                    </thead>
-                    <tbody  *ngIf="position == 5">
-                        <td>{{ selectedItem.totalFats }} (g)</td>
-                        <td>{{ selectedItem.totalCarbohydrates }} (g)</td>
-                        <td>{{ selectedItem.totalSugars }} (g)</td>
-                        <td>{{ selectedItem.totalProteins }} (g)</td>
-                    </tbody>
-                </table>
+          <thead *ngIf="position == 4">
+            <th scope="col">Carbohidratos Disponibles</th>
+            <th scope="col">Grasas Saturadas</th>
+            <th scope="col">Vitamina A</th>
+            <th scope="col">Vitamina C</th>
+            <th scope="col">Vitamina D</th>
+          </thead>
+          <tbody *ngIf="position == 4">
+            <td>{{ selectedItem.availableCarbohydrates }} (g)</td>
+            <td>{{ selectedItem.saturatedFats }} (g)</td>
+            <td>{{ selectedItem.vitaminA }} (mcg)</td>
+            <td>{{ selectedItem.vitaminC }} (mcg)</td>
+            <td>{{ selectedItem.vitaminD }} (mcg)</td>
+          </tbody>
 
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-secondary btn-sm" (click)="onPrevious()">
-                        <i class="fas fa-arrow-circle-left"></i>
-                    </button>
+          <thead *ngIf="position == 5">
+            <th scope="col">Grasas Totales</th>
+            <th scope="col">Carbohidratos Totales</th>
+            <th scope="col">Azúcares Totales</th>
+            <th scope="col">Proteínas Totales</th>
+          </thead>
+          <tbody *ngIf="position == 5">
+            <td>{{ selectedItem.totalFats }} (g)</td>
+            <td>{{ selectedItem.totalCarbohydrates }} (g)</td>
+            <td>{{ selectedItem.totalSugars }} (g)</td>
+            <td>{{ selectedItem.totalProteins }} (g)</td>
+          </tbody>
+        </table>
 
-                    <button type="button" class="btn btn-secondary btn-sm" (click)="onNext()">
-                        <i class="fas fa-arrow-circle-right"></i>
-                    </button>
-                </div>
-            </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm"
+            (click)="onPrevious()"
+          >
+            <i class="fas fa-arrow-circle-left"></i>
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm"
+            (click)="onNext()"
+          >
+            <i class="fas fa-arrow-circle-right"></i>
+          </button>
         </div>
+      </div>
     </div>
+  </div>
 </div>

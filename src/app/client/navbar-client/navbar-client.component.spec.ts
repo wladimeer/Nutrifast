@@ -7,9 +7,8 @@ describe('NavbarClientComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarClientComponent ]
-    })
-    .compileComponents();
+      declarations: [NavbarClientComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

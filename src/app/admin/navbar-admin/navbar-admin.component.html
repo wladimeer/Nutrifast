@@ -1,34 +1,52 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand text-white">Bienvenido(a) {{ user }}</a>
-    
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" aria-haspopup="true"
-          aria-expanded="false" data-toggle="dropdown" role="button"
-          style="cursor: pointer;"
-        >Gestión Ingredientes</a>
+        <a
+          class="nav-link dropdown-toggle"
+          aria-haspopup="true"
+          aria-expanded="false"
+          data-toggle="dropdown"
+          role="button"
+          style="cursor: pointer"
+          >Gestión Ingredientes</a
+        >
         <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="viewingredient">Ver Ingredientes</a>
-          <a class="dropdown-item" routerLink="newingredient">Nuevo Ingrediente</a>
+          <a class="dropdown-item" routerLink="viewingredient"
+            >Ver Ingredientes</a
+          >
+          <a class="dropdown-item" routerLink="newingredient"
+            >Nuevo Ingrediente</a
+          >
         </div>
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" aria-haspopup="true"
-          aria-expanded="false" data-toggle="dropdown" role="button"
-          style="cursor: pointer;"
-        >Más Opciones</a>
+        <a
+          class="nav-link dropdown-toggle"
+          aria-haspopup="true"
+          aria-expanded="false"
+          data-toggle="dropdown"
+          role="button"
+          style="cursor: pointer"
+          >Más Opciones</a
+        >
         <div class="dropdown-menu">
           <a class="dropdown-item" routerLink="profileadmin">Mi Perfil</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="listofrequest">Lista de Solicitudes</a>
-          <a class="dropdown-item" routerLink="approvedrequests">Solicitudes Aprobadas</a>
+          <a class="dropdown-item" routerLink="approvedrequests"
+            >Solicitudes Aprobadas</a
+          >
+          <a class="dropdown-item" routerLink="listofrequest"
+            >Lista de Solicitudes</a
+          >
         </div>
       </li>
-      
+
       <li class="nav-item active">
-        <a class="nav-link" style="cursor: pointer;" (click)="onLogout()">
+        <a class="nav-link" style="cursor: pointer" (click)="onLogout()">
           Cerrar Sesión
         </a>
       </li>

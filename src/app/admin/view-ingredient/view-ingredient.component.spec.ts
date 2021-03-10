@@ -7,9 +7,8 @@ describe('ViewIngredientComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewIngredientComponent ]
-    })
-    .compileComponents();
+      declarations: [ViewIngredientComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

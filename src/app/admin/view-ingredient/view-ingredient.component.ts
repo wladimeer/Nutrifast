@@ -7,9 +7,8 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-view-ingredient',
   templateUrl: './view-ingredient.component.html',
-  styleUrls: ['./view-ingredient.component.css']
+  styleUrls: ['./view-ingredient.component.css'],
 })
-
 export class ViewIngredientComponent implements OnInit {
   public ingredientList: Array<Ingredient>;
   public ingredientForm: FormGroup;
@@ -25,8 +24,8 @@ export class ViewIngredientComponent implements OnInit {
 
   onView(ingredient: any) {
     this.position = 0;
-    ingredient.selected = true, this.selectedItem = ingredient;
-    this.tableView = true, this.formModify = false;
+    (ingredient.selected = true), (this.selectedItem = ingredient);
+    (this.tableView = true), (this.formModify = false);
   }
 
   onPrevious() {
@@ -42,50 +41,63 @@ export class ViewIngredientComponent implements OnInit {
   }
 
   onHide(ingredient: any) {
-    this.tableView = false, ingredient.selected = false;
+    (this.tableView = false), (ingredient.selected = false);
   }
 
   onModify() {
     if (this.ingredientForm.invalid) {
-      Swal.fire({ icon: 'error', title: 'Atención', text: (
-        'Verifica que todos los campos estén completos!'
-      )});
+      Swal.fire({
+        icon: 'error',
+        title: 'Atención',
+        text: 'Verifica que todos los campos estén completos!',
+      });
       return;
     }
 
-    this.firebase.updateIngredient(this.ingredientForm.value).then(response => {
-      Swal.fire({ icon: 'success', title: 'Atención', text: String(response) });
-      this.loadIngredients();
-    })
-    .catch(response => {
-      Swal.fire({ icon: 'error', title: 'Atención', text: String(response) });
-      return;
-    });
+    this.firebase
+      .updateIngredient(this.ingredientForm.value)
+      .then((response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Atención',
+          text: String(response),
+        });
+        this.loadIngredients();
+      })
+      .catch((response) => {
+        Swal.fire({ icon: 'error', title: 'Atención', text: String(response) });
+        return;
+      });
   }
 
   onRemove(id: string) {
-    this.firebase.deleteIngredient(id)
-    .then(response => {
-      Swal.fire({ icon: 'success', title: 'Atención', text: String(response) });
-      this.loadIngredients();
-    })
-    .catch(response => {
-      Swal.fire({ icon: 'error', title: 'Atención', text: String(response) });
-      return;
-    });
+    this.firebase
+      .deleteIngredient(id)
+      .then((response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Atención',
+          text: String(response),
+        });
+        this.loadIngredients();
+      })
+      .catch((response) => {
+        Swal.fire({ icon: 'error', title: 'Atención', text: String(response) });
+        return;
+      });
   }
 
   loadFormModify(ingredient: any) {
-    this.tableView = false, this.formModify = true;
+    (this.tableView = false), (this.formModify = true);
     this.ingredientForm.get('id').setValue(ingredient.id);
     this.ingredientForm.get('name').setValue(ingredient.name);
     this.ingredientForm.get('font').setValue(ingredient.font);
   }
 
   loadIngredients() {
-    this.tableView = false, this.formModify = false;
+    (this.tableView = false), (this.formModify = false);
     this.firebase.readIngredients().then((response: Array<Ingredient>) => {
-      response.forEach(itemIngredient => {
+      response.forEach((itemIngredient) => {
         if (itemIngredient.typeValue == 'Gramos') {
           itemIngredient.typeValue = 'g';
         }
@@ -98,7 +110,7 @@ export class ViewIngredientComponent implements OnInit {
           itemIngredient.typeValue = 'mcg';
         }
       });
-      
+
       this.ingredientList = response;
     });
   }
@@ -107,19 +119,16 @@ export class ViewIngredientComponent implements OnInit {
     this.loadIngredients();
 
     this.ingredientForm = this.formBuilder.group({
-      id:
-      [''],
-      name:
-      ['', [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(18)
-      ]],
-      font:
-      ['', [
-        Validators.required,
-        Validators.minLength(3)
-      ]]
+      id: [''],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(18),
+        ],
+      ],
+      font: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 

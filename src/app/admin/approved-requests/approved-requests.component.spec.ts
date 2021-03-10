@@ -7,9 +7,8 @@ describe('ApprovedRequestsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ApprovedRequestsComponent ]
-    })
-    .compileComponents();
+      declarations: [ApprovedRequestsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

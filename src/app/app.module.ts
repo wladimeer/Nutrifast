@@ -14,7 +14,7 @@ import { ListOfRequestsComponent } from './admin/list-of-requests/list-of-reques
 import { ProfileAdminComponent } from './admin/profile-admin/profile-admin.component';
 import { MyRequestsComponent } from './client/my-requests/my-requests.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFireStorageModule } from '@angular/fire/storage'
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
@@ -38,7 +38,7 @@ import { Ng2Rut } from 'ng2-rut';
     NewIngredientComponent,
     ViewIngredientComponent,
     ApprovedRequestsComponent,
-    MyRequestsComponent
+    MyRequestsComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,10 +48,9 @@ import { Ng2Rut } from 'ng2-rut';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule,
-    Ng2Rut
+    Ng2Rut,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}

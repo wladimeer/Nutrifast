@@ -7,9 +7,8 @@ describe('ForgetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForgetComponent ]
-    })
-    .compileComponents();
+      declarations: [ForgetComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
