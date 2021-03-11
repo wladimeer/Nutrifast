@@ -7,9 +7,8 @@ describe('NewIngredientComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewIngredientComponent ]
-    })
-    .compileComponents();
+      declarations: [NewIngredientComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

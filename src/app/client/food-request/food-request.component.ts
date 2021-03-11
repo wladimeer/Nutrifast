@@ -10,7 +10,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./food-request.component.css'],
 })
 export class FoodRequestComponent implements OnInit {
-  public ingredientList: Array<Ingredient>;
+  public ingredientList: Array<any>;
+  private selectedItem = [];
   public foodForm: FormGroup;
   public numbers = [];
 
@@ -20,25 +21,62 @@ export class FoodRequestComponent implements OnInit {
   ) {}
 
   onNewForm() {
-    if (this.quantitiesList.length == this.ingredientList.length) {
+    if (this.ingredientList != undefined) {
+      if (this.quantitiesList.length == this.ingredientList.length) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Atención',
+          text: 'Llegaste al límite, no hay mas ingredientes por seleccionar!',
+        });
+        return;
+      } else {
+        this.quantitiesList.push(
+          this.formBuilder.group({
+            idIngredient: ['', [Validators.required]],
+            ingredientPercentage: ['', [Validators.required]],
+          })
+        );
+      }
+    } else {
       Swal.fire({
         icon: 'error',
         title: 'Atención',
-        text: 'Llegaste al límite, no hay mas ingredientes por seleccionar!',
+        text: 'Danos un momento por favor estamos cargando la información!',
       });
-      return;
-    } else {
-      this.quantitiesList.push(
-        this.formBuilder.group({
-          idIngredient: ['', [Validators.required]],
-          ingredientPercentage: ['', [Validators.required]],
-        })
-      );
     }
   }
 
   onRemoveForm(index: number) {
     this.quantitiesList.removeAt(index);
+  }
+
+  onSelected(id: string, index: number) {
+    if (id != '') {
+      if (this.selectedItem.length == 0) {
+        this.selectedItem.push(id);
+      } else {
+        let equals = false;
+
+        this.selectedItem.forEach((itemId) => {
+          if (itemId == id) {
+            equals = true;
+          }
+        });
+
+        if (!equals) {
+          this.selectedItem.push(id);
+        } else {
+          this.quantitiesList.at(index).get('idIngredient').setValue('');
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Atención',
+            text: 'La opción que ingresada ya se encuentra seleccionada!',
+          });
+          return;
+        }
+      }
+    }
   }
 
   onRequest() {
@@ -86,6 +124,7 @@ export class FoodRequestComponent implements OnInit {
       .sendRequest(this.foodForm.value)
       .then((response) => {
         this.quantitiesList.controls.splice(0, this.quantitiesList.length);
+
         Swal.fire({
           icon: 'success',
           title: 'Atención',

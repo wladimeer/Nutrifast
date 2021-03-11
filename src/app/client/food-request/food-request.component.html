@@ -66,7 +66,12 @@
                 <div class="col">
                   <div class="form-group mt-2">
                     <label>Ingrediente {{ i + 1 }}</label>
-                    <select class="form-control" formControlName="idIngredient">
+                    <select
+                      #idIngredient
+                      class="form-control"
+                      formControlName="idIngredient"
+                      (change)="onSelected(idIngredient.value, i)"
+                    >
                       <option value="">Selecciona</option>
                       <option
                         *ngFor="let item of ingredientList"
