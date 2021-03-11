@@ -44,8 +44,8 @@ export class ApprovedRequestsComponent implements OnInit {
     (this.viewData = false), (this.selectedList = null);
   }
 
-  onMakePDF(id: string) {
-    this.makepdf.builder();
+  onMakePDF(label: any, type: number) {
+    this.makepdf.builder(label, type);
   }
 
   loadNutritionalInformation() {

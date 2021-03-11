@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Food, NutritionalInformation, User } from 'src/app/model/object';
+import { Food, NutritionalInformation } from 'src/app/model/object';
 import { FirebaseService } from '../../service/firebase.service';
+import { MakepdfService } from '../../service/makepdf.service';
 
 @Component({
   selector: 'app-my-requests',
@@ -12,7 +13,10 @@ export class MyRequestsComponent implements OnInit {
   public informationList = [];
   public viewData = false;
 
-  constructor(private firebase: FirebaseService) {}
+  constructor(
+    private firebase: FirebaseService,
+    private makepdf: MakepdfService
+  ) {}
 
   onView(id: string) {
     this.firebase
@@ -40,7 +44,9 @@ export class MyRequestsComponent implements OnInit {
     (this.viewData = false), (this.selectedList = null);
   }
 
-  onMakePDF(id: string) {}
+  onMakePDF(label: any, type: number) {
+    this.makepdf.builder(label, type);
+  }
 
   loadNutritionalInformation() {
     this.firebase
