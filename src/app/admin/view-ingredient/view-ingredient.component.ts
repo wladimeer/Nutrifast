@@ -35,7 +35,7 @@ export class ViewIngredientComponent implements OnInit {
   }
 
   onNext() {
-    if (this.position < 5) {
+    if (this.position < 8) {
       this.position++;
     }
   }
@@ -109,6 +109,7 @@ export class ViewIngredientComponent implements OnInit {
         if (itemIngredient.typeValue == 'Microgramos') {
           itemIngredient.typeValue = 'mcg';
         }
+        // itemIngredient.font = itemIngredient.font.slice(0, -10);
       });
 
       this.ingredientList = response;
@@ -120,14 +121,7 @@ export class ViewIngredientComponent implements OnInit {
 
     this.ingredientForm = this.formBuilder.group({
       id: [''],
-      name: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(18),
-        ],
-      ],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       font: ['', [Validators.required, Validators.minLength(3)]],
     });
   }

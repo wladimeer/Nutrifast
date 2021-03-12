@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="card col-8 mt-5 mb-5">
+    <div class="card col-xl-8 col-lg-8 col-sm-11 my-5 mx-2">
       <h4 class="text-center mt-3 mb-4">Lista de Solicitudes</h4>
 
       <div class="row mt-2">
@@ -8,7 +8,12 @@
           <thead>
             <tr>
               <th scope="col">Nombre</th>
-              <th scope="col">Fecha de Creación</th>
+              <th
+                class="d-xl-block d-lg-block d-md-block d-sm-none d-none"
+                scope="col"
+              >
+                Fecha de Creación
+              </th>
               <th scope="col">Estado</th>
               <th>Acciones</th>
             </tr>
@@ -16,7 +21,9 @@
           <tbody *ngIf="requestList?.length > 0; else noContent">
             <tr *ngFor="let item of requestList">
               <td>{{ item.name }}</td>
-              <td>{{ item.createDate }}</td>
+              <td class="d-xl-block d-lg-block d-md-block d-sm-none d-none">
+                {{ item.createDate }}
+              </td>
               <td *ngIf="item.state == 0">Pendiente</td>
               <td *ngIf="item.state == 1" style="color: green">Aprobada</td>
               <td *ngIf="item.state == 2" style="color: red">Rechazada</td>

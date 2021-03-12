@@ -45,14 +45,7 @@ export class NewIngredientComponent implements OnInit {
 
   ngOnInit(): void {
     this.ingredientForm = this.formBuilder.group({
-      name: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(18),
-        ],
-      ],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       font: ['', [Validators.required, Validators.minLength(3)]],
       value: ['', [Validators.min(1), Validators.required]],
       typeValue: ['', [Validators.required]],

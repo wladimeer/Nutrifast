@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="card col-7 mt-5 mb-5">
+    <div class="card col-xl-7 col-lg-8 col-sm-11 my-5 mx-2">
       <h3 class="text-center mt-3">Crea tu Cuenta</h3>
 
       <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
@@ -207,8 +207,8 @@
         </div>
       </form>
 
-      <div class="form-group mt-4">
-        <div class="text-center" style="font-size: 15px">
+      <div class="d-flex justify-content-around mt-4 mb-4">
+        <div style="font-size: 15px">
           <label>¿Tienes una cuenta?&nbsp;</label>
           <a routerLink="/login">Iniciar Sesión</a>
         </div>

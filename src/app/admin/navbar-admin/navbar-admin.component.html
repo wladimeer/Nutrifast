@@ -1,5 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand text-white">Bienvenido(a) {{ user }}</a>
+  <button
+    aria-expanded="false"
+    class="navbar-toggler"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-label="Toggle navigation"
+    data-toggle="collapse"
+    type="button"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
@@ -11,27 +22,7 @@
           data-toggle="dropdown"
           role="button"
           style="cursor: pointer"
-          >Gestión Ingredientes</a
-        >
-        <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="viewingredient"
-            >Ver Ingredientes</a
-          >
-          <a class="dropdown-item" routerLink="newingredient"
-            >Nuevo Ingrediente</a
-          >
-        </div>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          aria-haspopup="true"
-          aria-expanded="false"
-          data-toggle="dropdown"
-          role="button"
-          style="cursor: pointer"
-          >Más Opciones</a
+          >Opciones</a
         >
         <div class="dropdown-menu">
           <a class="dropdown-item" routerLink="profileadmin">Mi Perfil</a>
@@ -45,7 +36,27 @@
         </div>
       </li>
 
-      <li class="nav-item active">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          aria-haspopup="true"
+          aria-expanded="false"
+          data-toggle="dropdown"
+          role="button"
+          style="cursor: pointer"
+          >Gestión Ingrediente</a
+        >
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="viewingredient"
+            >Ver Ingredientes</a
+          >
+          <a class="dropdown-item" routerLink="newingredient"
+            >Nuevo Ingrediente</a
+          >
+        </div>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" style="cursor: pointer" (click)="onLogout()">
           Cerrar Sesión
         </a>

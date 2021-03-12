@@ -1,1 +1,11 @@
+table .half {
+  width: calc(100% / 2) !important;
+}
 
+table .four_half {
+  width: calc(100% / 4) !important;
+}
+
+table .three_half {
+  width: calc(100% / 3) !important;
+}
