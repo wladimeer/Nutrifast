@@ -109,7 +109,6 @@ export class ViewIngredientComponent implements OnInit {
         if (itemIngredient.typeValue == 'Microgramos') {
           itemIngredient.typeValue = 'mcg';
         }
-        // itemIngredient.font = itemIngredient.font.slice(0, -10);
       });
 
       this.ingredientList = response;
