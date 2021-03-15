@@ -30,6 +30,33 @@
 
               <button
                 type="button"
+                (click)="onView(item)"
+                class="btn btn-success mt-1 mr-2"
+                title="Ver Cliente"
+                *ngIf="!item.selected && !tableView"
+              >
+                <i class="fas fa-eye"></i>
+              </button>
+              <button
+                type="button"
+                disabled
+                class="btn btn-success mt-1 mr-2"
+                *ngIf="!item.selected && tableView"
+              >
+                <i class="fas fa-eye"></i>
+              </button>
+              <button
+                type="button"
+                (click)="onHide(item)"
+                class="btn btn-success mt-1 mr-2"
+                title="Ocultar Cliente"
+                *ngIf="item.selected && tableView"
+              >
+                <i class="fas fa-eye-slash"></i>
+              </button>
+
+              <button
+                type="button"
                 (click)="onApprove(item)"
                 title="Aprobar"
                 class="btn btn-success mt-1 mr-2"
@@ -72,6 +99,26 @@
             </tr>
           </ng-template>
         </table>
+
+        <div class="col">
+          <div *ngIf="selectedItem && tableView" class="card p-4 mb-4">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <label class="font-weight-bold">Nombre Completo:&nbsp;</label
+                >{{ selectedItem.names }} {{ selectedItem.lastName }}
+                {{ selectedItem.mothersLastName }}
+              </li>
+              <li class="list-group-item">
+                <label class="font-weight-bold">Correo Electrónico:&nbsp;</label
+                >{{ selectedItem.email }}
+              </li>
+              <li class="list-group-item">
+                <label class="font-weight-bold">Teléfono Contacto:&nbsp;</label
+                >{{ selectedItem.phone }}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>

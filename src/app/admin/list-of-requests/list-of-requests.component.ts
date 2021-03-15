@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/service/firebase.service';
-import { Food, Ingredient } from 'src/app/model/object';
+import { Food, Ingredient, User } from 'src/app/model/object';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 })
 export class ListOfRequestsComponent implements OnInit {
   public requestList: Array<Food>;
+  public selectedItem: User;
+  public tableView = false;
 
   constructor(private firebase: FirebaseService) {}
 
@@ -104,6 +106,7 @@ export class ListOfRequestsComponent implements OnInit {
             title: 'Atención',
             text: String(response),
           }).then(() => {
+            (this.tableView = false), (request.selected = false);
             this.loadRequest(), this.newState(request.id, 1);
           });
         })
@@ -120,6 +123,7 @@ export class ListOfRequestsComponent implements OnInit {
 
   onReject(request: any) {
     this.newState(request.id, 2);
+    (this.tableView = false), (request.selected = false);
   }
 
   newState(id: string, state: number) {
@@ -137,6 +141,18 @@ export class ListOfRequestsComponent implements OnInit {
         Swal.fire({ icon: 'error', title: 'Atención', text: String(response) });
         return;
       });
+  }
+
+  onView(request: any) {
+    this.firebase.searchUser(request.idClient).then((response: User) => {
+      this.selectedItem = response;
+    });
+
+    (this.tableView = true), (request.selected = true);
+  }
+
+  onHide(request: any) {
+    (this.tableView = false), (request.selected = false);
   }
 
   loadRequest() {
