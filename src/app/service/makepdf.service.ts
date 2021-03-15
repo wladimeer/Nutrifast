@@ -126,55 +126,116 @@ export class MakepdfService {
                       columns: [
                         {
                           text:
-                            label.energy +
+                            (label.energy / label.servingPerContainer) * 4 +
                             '\n' +
-                            label.protein.toFixed(1) +
+                            (
+                              (label.protein / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.totalFats.toFixed(1) +
+                            (
+                              (label.totalFats / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.transFattyAcids.toFixed(1) +
+                            (
+                              (label.transFattyAcids /
+                                label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.cholesterol.toFixed(1) +
+                            (
+                              (label.cholesterol / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.availableCarbohydrates.toFixed(1) +
+                            (
+                              (label.availableCarbohydrates /
+                                label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.totalSugars.toFixed(1) +
+                            (
+                              (label.totalSugars / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.dietaryFiber.toFixed(1) +
+                            (
+                              (label.dietaryFiber / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.solubleFiber.toFixed(1) +
+                            (
+                              (label.solubleFiber / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.insolubleFiber.toFixed(1) +
+                            (
+                              (label.insolubleFiber /
+                                label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.insulin.toFixed(1) +
+                            (
+                              (label.insulin / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.sodium.toFixed(1),
+                            (
+                              (label.sodium / label.servingPerContainer) *
+                              4
+                            ).toFixed(1),
                         },
                         {
                           text:
-                            (label.energy / 4).toFixed() +
+                            (
+                              label.energy / label.servingPerContainer
+                            ).toFixed() +
                             '\n' +
-                            (label.protein / 4).toFixed(1) +
+                            (label.protein / label.servingPerContainer).toFixed(
+                              1
+                            ) +
                             '\n' +
-                            (label.totalFats / 4).toFixed(1) +
+                            (
+                              label.totalFats / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.transFattyAcids / 4).toFixed(1) +
+                            (
+                              label.transFattyAcids / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.cholesterol / 4).toFixed(1) +
+                            (
+                              label.cholesterol / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.availableCarbohydrates / 4).toFixed(1) +
+                            (
+                              label.availableCarbohydrates /
+                              label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.totalSugars / 4).toFixed(1) +
+                            (
+                              label.totalSugars / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.dietaryFiber / 4).toFixed(1) +
+                            (
+                              label.dietaryFiber / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.solubleFiber / 4).toFixed(1) +
+                            (
+                              label.solubleFiber / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.insolubleFiber / 4).toFixed(1) +
+                            (
+                              label.insolubleFiber / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.insulin / 4).toFixed(1) +
+                            (label.insulin / label.servingPerContainer).toFixed(
+                              1
+                            ) +
                             '\n' +
-                            (label.sodium / 4).toFixed(1),
+                            (label.sodium / label.servingPerContainer).toFixed(
+                              1
+                            ),
                         },
                       ],
                       border: [false, true, true, true],
@@ -318,67 +379,148 @@ export class MakepdfService {
                       columns: [
                         {
                           text:
-                            label.energy +
+                            (label.energy / label.servingPerContainer) * 4 +
                             '\n' +
-                            label.protein.toFixed(1) +
+                            (
+                              (label.protein / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.totalFats.toFixed(1) +
+                            (
+                              (label.totalFats / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.saturatedFats.toFixed(1) +
+                            (
+                              (label.saturatedFats /
+                                label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.monoUnsaturatedFats.toFixed(1) +
+                            (
+                              (label.monoUnsaturatedFats /
+                                label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.polyUnsaturatedFats.toFixed(1) +
+                            (
+                              (label.polyUnsaturatedFats /
+                                label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.transFattyAcids.toFixed(1) +
+                            (
+                              (label.transFattyAcids /
+                                label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.cholesterol.toFixed(1) +
+                            (
+                              (label.cholesterol / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.totalCarbohydrates.toFixed(1) +
+                            (
+                              (label.totalCarbohydrates /
+                                label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.totalSugars.toFixed(1) +
+                            (
+                              (label.totalSugars / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.dietaryFiber.toFixed(1) +
+                            (
+                              (label.dietaryFiber / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.solubleFiber.toFixed(1) +
+                            (
+                              (label.solubleFiber / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.insolubleFiber.toFixed(1) +
+                            (
+                              (label.insolubleFiber /
+                                label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.insulin.toFixed(1) +
+                            (
+                              (label.insulin / label.servingPerContainer) *
+                              4
+                            ).toFixed(1) +
                             '\n' +
-                            label.sodium.toFixed(1),
+                            (
+                              (label.sodium / label.servingPerContainer) *
+                              4
+                            ).toFixed(1),
                         },
                         {
                           text:
-                            (label.energy / 4).toFixed() +
+                            (
+                              label.energy / label.servingPerContainer
+                            ).toFixed() +
                             '\n' +
-                            (label.protein / 4).toFixed(1) +
+                            (label.protein / label.servingPerContainer).toFixed(
+                              1
+                            ) +
                             '\n' +
-                            (label.totalFats / 4).toFixed(1) +
+                            (
+                              label.totalFats / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.saturatedFats / 4).toFixed(1) +
+                            (
+                              label.saturatedFats / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.monoUnsaturatedFats / 4).toFixed(1) +
+                            (
+                              label.monoUnsaturatedFats /
+                              label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.polyUnsaturatedFats / 4).toFixed(1) +
+                            (
+                              label.polyUnsaturatedFats /
+                              label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.transFattyAcids / 4).toFixed(1) +
+                            (
+                              label.transFattyAcids / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.cholesterol / 4).toFixed(1) +
+                            (
+                              label.cholesterol / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.totalCarbohydrates / 4).toFixed(1) +
+                            (
+                              label.totalCarbohydrates /
+                              label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.totalSugars / 4).toFixed(1) +
+                            (
+                              label.totalSugars / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.dietaryFiber / 4).toFixed(1) +
+                            (
+                              label.dietaryFiber / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.solubleFiber / 4).toFixed(1) +
+                            (
+                              label.solubleFiber / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.insolubleFiber / 4).toFixed(1) +
+                            (
+                              label.insolubleFiber / label.servingPerContainer
+                            ).toFixed(1) +
                             '\n' +
-                            (label.insulin / 4).toFixed(1) +
+                            (label.insulin / label.servingPerContainer).toFixed(
+                              1
+                            ) +
                             '\n' +
-                            (label.sodium / 4).toFixed(1),
+                            (label.sodium / label.servingPerContainer).toFixed(
+                              1
+                            ),
                         },
                       ],
                       border: [false, true, true, true],

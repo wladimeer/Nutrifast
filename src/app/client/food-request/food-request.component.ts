@@ -26,7 +26,7 @@ export class FoodRequestComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Atención',
-          text: 'No hay ingredientes por seleccionar!',
+          text: 'No hay ingredientes por seleccionar o haz llegado al limite!',
         });
         return;
       } else {
