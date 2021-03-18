@@ -76,9 +76,8 @@ export class ListOfRequestsComponent implements OnInit {
             nutritionalInformation.insolubleFiber +=
               (itemIngredient.insolubleDietaryFiber * percentage) / 100;
 
-            // nutritionalInformation.transFattyAcids += (
-            //   ((itemIngredient.transFattyAcids * percentage) / 100)
-            // );
+            nutritionalInformation.transFattyAcids +=
+              (itemIngredient.transFattyAcids * percentage) / 100;
 
             nutritionalInformation.solubleFiber +=
               itemIngredient.solubleDietaryFiber / 100;

@@ -31,6 +31,7 @@ export class Ingredient {
   cholesterol: number;
   totalProteins: number;
   saturatedFats: number;
+  transFattyAcids: number;
   totalCarbohydrates: number;
   monoUnsaturatedFats: number;
   availableCarbohydrates: number;

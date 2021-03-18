@@ -8,7 +8,7 @@
           class="row justify-content-center"
           *ngIf="quantitiesList.length > 0"
         >
-          <div class="col-10">
+          <div class="col-12">
             <div class="row">
               <div class="col">
                 <div class="form-group mt-2">
@@ -60,8 +60,7 @@
           *ngFor="let form of quantitiesList.controls; let i = index"
         >
           <div class="row justify-content-center" [formGroupName]="i">
-            <div class="col-1"></div>
-            <div class="col-10">
+            <div class="col-12">
               <div class="row">
                 <div class="col">
                   <div class="form-group mt-2">
@@ -102,13 +101,6 @@
                 </div>
               </div>
             </div>
-            <div class="col-1">
-              <div class="form-group mt-2">
-                <span type="button" (click)="onRemoveForm(i)" title="Eliminar">
-                  <i class="fas fa-times-circle" style="color: red"></i>
-                </span>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -120,6 +112,15 @@
             (click)="onNewForm()"
           >
             <i class="fas fa-plus-circle" style="color: green"></i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-light col-sm mt-1"
+            title="Eliminar Ingredientes"
+            (click)="onRemoveForm()"
+            *ngIf="quantitiesList.length > 0"
+          >
+            <i class="fas fa-times-circle" style="color: red"></i>
           </button>
         </div>
 

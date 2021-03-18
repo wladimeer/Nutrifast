@@ -46,26 +46,51 @@ export class FoodRequestComponent implements OnInit {
     }
   }
 
-  onRemoveForm(index: number) {
-    this.quantitiesList.removeAt(index);
+  onRemoveForm() {
+    this.quantitiesList.controls.splice(0, this.quantitiesList.length);
   }
 
   onSelected(id: string, index: number) {
     if (id != '') {
       if (this.selectedItem.length == 0) {
-        this.selectedItem.push(id);
+        this.selectedItem.push({
+          index: index,
+          id: id,
+        });
       } else {
         let equals = false;
 
-        this.selectedItem.forEach((itemId) => {
-          if (itemId == id) {
+        this.selectedItem.forEach((itemSelected) => {
+          if (itemSelected.id == id) {
             equals = true;
           }
         });
 
         if (!equals) {
-          this.selectedItem.push(id);
+          if (this.selectedItem.findIndex((r) => r.index == index) < 0) {
+            this.selectedItem.push({
+              index: index,
+              id: id,
+            });
+          } else {
+            this.selectedItem.splice(
+              this.selectedItem.findIndex((r) => r.index == index),
+              1
+            );
+
+            this.selectedItem.push({
+              index: index,
+              id: id,
+            });
+          }
         } else {
+          if (this.selectedItem.find((r) => r.index == index)) {
+            this.selectedItem.splice(
+              this.selectedItem.findIndex((r) => r.index == index),
+              1
+            );
+          }
+
           this.quantitiesList.at(index).get('idIngredient').setValue('');
 
           Swal.fire({
@@ -76,6 +101,11 @@ export class FoodRequestComponent implements OnInit {
           return;
         }
       }
+    } else {
+      this.selectedItem.splice(
+        this.selectedItem.findIndex((r) => r.index == index),
+        1
+      );
     }
   }
 

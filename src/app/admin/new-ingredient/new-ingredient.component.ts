@@ -49,6 +49,7 @@ export class NewIngredientComponent implements OnInit {
       font: ['', [Validators.required, Validators.minLength(3)]],
       value: ['', [Validators.min(1), Validators.required]],
       typeValue: ['', [Validators.required]],
+      transFattyAcids: ['', [Validators.min(0), Validators.required]],
       totalProteins: ['', [Validators.min(0), Validators.required]],
       totalFats: ['', [Validators.min(0), Validators.required]],
       saturatedFats: ['', [Validators.min(0), Validators.required]],

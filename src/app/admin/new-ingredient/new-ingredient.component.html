@@ -6,23 +6,6 @@
       <form [formGroup]="ingredientForm" (ngSubmit)="onSave()">
         <div class="row">
           <div class="form-group mt-2 col">
-            <label for="name">Nombre Ingrediente</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="name"
-              id="name"
-            />
-
-            <div
-              class="alert alert-danger text-center mt-3"
-              *ngIf="form.name.errors && form.name.touched"
-              role="alert"
-            >
-              Debes Ingresar un Nombre Valido Para el Ingrediente.
-            </div>
-          </div>
-          <div class="form-group mt-2 col">
             <label for="font">Fuente Ingrediente</label>
             <input
               type="text"
@@ -42,6 +25,23 @@
         </div>
 
         <div class="row">
+          <div class="form-group mt-2 col">
+            <label for="name">Nombre Ingrediente</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              id="name"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="form.name.errors && form.name.touched"
+              role="alert"
+            >
+              Debes Ingresar un Nombre Valido Para el Ingrediente.
+            </div>
+          </div>
           <div class="form-group mt-2 col">
             <label for="typeValue">Tipo de Valor</label>
             <select
@@ -63,6 +63,9 @@
               Debes Seleccionar un Tipo de Valor Para el Valor a Ingresar.
             </div>
           </div>
+        </div>
+
+        <div class="row">
           <div class="form-group mt-2 col">
             <label for="value">Valor del Ingrediente</label>
             <input
@@ -78,6 +81,25 @@
               role="alert"
             >
               Debes Ingresar un Valor Valido Para el Ingrediente.
+            </div>
+          </div>
+          <div class="form-group mt-2 col">
+            <label for="transFattyAcids">Ácidos Grasos Trans</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="transFattyAcids"
+              id="transFattyAcids"
+            />
+
+            <div
+              class="alert alert-danger text-center mt-3"
+              *ngIf="
+                form.transFattyAcids.errors && form.transFattyAcids.touched
+              "
+              role="alert"
+            >
+              Debes Ingresar Ácidos Grasos Trans Para el Ingrediente.
             </div>
           </div>
         </div>
