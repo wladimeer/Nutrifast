@@ -18,9 +18,9 @@ export class ApprovedRequestsComponent implements OnInit {
     private makepdf: MakepdfService
   ) {}
 
-  onView(id: string) {
+  onView(request: any) {
     this.firebase
-      .searchNutritionalInformation(id)
+      .searchNutritionalInformation(request.id)
       .then((response: NutritionalInformation) => {
         switch (response.typeValue) {
           case 'Gramos':
@@ -37,11 +37,11 @@ export class ApprovedRequestsComponent implements OnInit {
         this.selectedList = response;
       });
 
-    this.viewData = true;
+    (this.viewData = true), (request.selected = true);
   }
 
-  onHide() {
-    (this.viewData = false), (this.selectedList = null);
+  onHide(request: any) {
+    (this.viewData = false), (request.selected = false);
   }
 
   onMakePDF(label: any, type: number) {
